@@ -1,0 +1,40 @@
+{
+  "name": "delegator",
+  "version": "0.0.0",
+  "description": "Delegates the fields to be displayed",
+  "keywords": [
+    "LDfields",
+    "delegate",
+    "linked",
+    "data",
+    "input",
+    "rdf",
+    "owl"
+  ],
+  "author": "jeswr <jesse.wright@anu.edu.au>",
+  "homepage": "https://github.com/schimatos/LDfields#readme",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "types": "lib/index.d.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/schimatos/LDfields.git"
+  },
+  "scripts": {
+    "tsc": "tsc",
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/schimatos/LDfields/issues"
+  },
+  "dependencies": {
+    "default": "^0.1.1"
+  }
+}

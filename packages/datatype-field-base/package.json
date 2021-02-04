@@ -1,0 +1,35 @@
+{
+  "name": "datatype-field-base",
+  "version": "0.0.0",
+  "description": "Base LDfield class for modifying datatype entries",
+  "keywords": [
+    "LDfield",
+    "base",
+    "liked",
+    "data",
+    "rdf",
+    "owl",
+    "input"
+  ],
+  "author": "jeswr <jesse.wright@anu.edu.au>",
+  "homepage": "https://github.com/schimatos/LDfields#readme",
+  "license": "MIT",
+  "main": "lib/datatype-field-base.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/schimatos/LDfields.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/schimatos/LDfields/issues"
+  }
+}

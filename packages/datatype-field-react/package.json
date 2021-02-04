@@ -1,0 +1,36 @@
+{
+  "name": "datatype-field-react",
+  "version": "0.0.0",
+  "description": "Basic LDfield class for datatype inputs in react",
+  "keywords": [
+    "LDfield",
+    "linked",
+    "data",
+    "rdf",
+    "owl",
+    "input",
+    "react",
+    "datatype"
+  ],
+  "author": "jeswr <jesse.wright@anu.edu.au>",
+  "homepage": "https://github.com/schimatos/LDfields#readme",
+  "license": "MIT",
+  "main": "lib/datatype-field-react.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/schimatos/LDfields.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/schimatos/LDfields/issues"
+  }
+}
