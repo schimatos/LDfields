@@ -14,9 +14,9 @@
     "test:coverage": "npm test -- --coverage",
     "test:badges": "npm run test:coverage  && jest-coverage-badges",
     "test": "jest",
-    "lint": "eslint **/**.ts **/**.tsx --ext .tsx .ts",
+    "lint": "eslint **/**.ts **/**.tsx",
     "lint:fix": "eslint **/**.ts **/**.tsx --fix",
-    "build": "lerna boostrap && lerna run tsc",
+    "build": "lerna bootstrap && lerna run tsc",
     "prepare": "npm run build",
     "semantic-release": "semantic-release",
     "postinstall": "npm run build"
@@ -64,10 +64,10 @@
     "testRegex": "[^.]*/__tests__/[^.]*-test\\.tsx?",
     "coverageThreshold": {
       "global": {
-        "branches": 100,
-        "functions": 100,
-        "lines": 100,
-        "statements": 100
+        "branches": 50,
+        "functions": 50,
+        "lines": 50,
+        "statements": 50
       }
     }
   },
