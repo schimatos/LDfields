@@ -16,7 +16,7 @@ export abstract class DatatypeInput<
   /**
    * The datatype(s) that the field supports.
    */
-  abstract supportedDatatypes: Record<string, boolean>;
+  abstract supportedDatatypes: Partial<Record<string, boolean>>;
 
   /**
    * The field entries that the Datatype input
@@ -25,6 +25,6 @@ export abstract class DatatypeInput<
   modifies: (keyof Props & string)[] = ['value'];
 
   supports(props: Props) {
-    return props.termType === 'Literal' && this.supportedDatatypes[props.datatype];
+    return props.termType === 'Literal' && this.supportedDatatypes[props.datatype] === true;
   }
 }

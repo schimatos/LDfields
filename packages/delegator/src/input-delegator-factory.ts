@@ -20,6 +20,9 @@ export function InputDelegatorFactory<
   genericFields?: GenericField<T, Props, ExtraData>[],
   multiControl: boolean = false,
 ): new () => InputDelegator<T, Props, ExtraData> {
+  // Pre computing the sorted fields and settings record so that they
+  // don't have to be recalculated every time an input delegator issues
+  // instantiated.
   const sortedFields = getSortedFields(settings, fields, genericFields);
   const settingsRecord = settingsToRecord(settings);
   return class {
