@@ -1,5 +1,5 @@
 {
-  "name": "datatype-field-base",
+  "name": "@ldfields/datatype-field-base",
   "version": "0.0.0",
   "description": "Base LDfield class for modifying datatype entries",
   "keywords": [
@@ -11,10 +11,11 @@
     "owl",
     "input"
   ],
-  "author": "jeswr <jesse.wright@anu.edu.au>",
+  "author": "Jesse Wright (@jeswr) <jesse.wright@anu.edu.au>",
   "homepage": "https://github.com/schimatos/LDfields#readme",
   "license": "MIT",
-  "main": "lib/datatype-field-base.js",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "directories": {
     "lib": "lib",
     "test": "__tests__"
@@ -27,9 +28,18 @@
     "url": "git+https://github.com/schimatos/LDfields.git"
   },
   "scripts": {
+    "tsc": "tsc",
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "bugs": {
     "url": "https://github.com/schimatos/LDfields/issues"
+  },
+  "dependencies": {
+    "@ldfields/field-base": "^0.0.0",
+    "react": "^17.0.1"
+  },
+  "devDependencies": {
+    "@ontologies/core": "^2.0.2",
+    "typescript": "^4.1.3"
   }
 }

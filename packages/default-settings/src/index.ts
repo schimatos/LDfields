@@ -1,74 +1,45 @@
-function allowedAndSufficient<T extends LDFieldCondition>(
-  condition: T //, priority: number
-): LDFieldConditions {
-  return {
-    allowed: condition,
-    required: condition, //, priority
-  };
+import type {
+  LDfieldSettings,
+} from '@ldfields/delegator/types';
+import {
+  createInCondition,
+  generateLDfieldSetting,
+} from '@ldfields/settings-utils';
+
+// TODO: Import this from on2ts
+const enum rdf {
+  type = 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type',
+  langString = 'http://www.w3.org/1999/02/22-rdf-syntax-ns#langString'
 }
+
+const enum rdfs {
+  label = 'http://www.w3.org/1999/02/22-rdf-syntax-ns#label'
+}
+
+type PropTerm =
+  | 'value'
+  | 'termType'
+  | 'datatype'
+  | 'language'
+  | rdf.type
+  | rdfs.label
 
 /**
  * The default settings for the LDfield
  */
-const defaultSettings: LDFieldSettings = [
-  Object.freeze({
-    fieldFor: "value",
-    condition: allowedAndSufficient(true),
-  }),
-  Object.freeze({
-    fieldFor: "termType",
-    condition: allowedAndSufficient(true),
-  }),
-  Object.freeze({
-    fieldFor: "datatype",
-    condition: allowedAndSufficient([
-      {
-        type: "in",
-        fieldFor: "termType",
-        options: {
-          Literal: true,
-        },
-      },
-    ]),
-  }),
-  Object.freeze({
-    fieldFor: rdf.type,
-    condition: allowedAndSufficient([
-      {
-        type: "in",
-        fieldFor: "termType",
-        options: {
-          BlankNode: true,
-          NamedNode: true,
-        },
-      },
-    ]),
-  }),
-  Object.freeze({
-    fieldFor: "language",
-    condition: allowedAndSufficient([
-      {
-        type: "in",
-        fieldFor: "datatype",
-        options: {
-          [rdf.langString]: true,
-        },
-      },
-    ]),
-  }),
-  Object.freeze({
-    fieldFor: rdfs.label,
-    condition: {
-      allowed: [
-        {
-          fieldFor: "termType",
-          options: {
-            NamedNode: true,
-            BlankNode: true,
-          },
-        },
-      ],
-      required: false,
-    },
-  }),
-] as const;
+export const defaultSettings: LDfieldSettings<PropTerm> = [
+  generateLDfieldSetting<PropTerm>('value', true),
+  generateLDfieldSetting<PropTerm>('termType', true),
+  generateLDfieldSetting<PropTerm>('datatype', [
+    createInCondition('termType', { Literal: true }),
+  ]),
+  generateLDfieldSetting<PropTerm>(rdf.type, [
+    createInCondition('termType', { BlankNode: true, NamedNode: true }),
+  ]),
+  generateLDfieldSetting<PropTerm>('language', [
+    createInCondition('datatype', { [rdf.langString]: true }),
+  ]),
+  generateLDfieldSetting<PropTerm>(rdfs.label, [
+    createInCondition('termType', { BlankNode: true, NamedNode: true }),
+  ], false),
+];

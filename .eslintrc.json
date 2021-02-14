@@ -10,10 +10,14 @@
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
       "ecmaVersion": 12,
-      "sourceType": "module"
+      "sourceType": "module",
+      "ecmaFeatures": {
+        "jsx": true
+      }
   },
   "plugins": [
-      "@typescript-eslint"
+      "@typescript-eslint",
+      "extra-rules"
   ],
   "rules": {
       "import/prefer-default-export": "off",
@@ -21,6 +25,12 @@
       "no-restricted-syntax": "off",
       "import/extensions": "off",
       "no-undef": "off",
-      "no-unde"
+      "no-unused-vars": "off",
+      "no-shadow": "off",
+      "no-use-before-define": "off",
+      "max-len": ["error", {"code": 100}],
+      "@typescript-eslint/consistent-type-imports": "error",
+      "class-methods-use-this": "off",
+      "extra-rules/no-commented-out-code": "warn"
   }
 }

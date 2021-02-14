@@ -1,5 +1,5 @@
 {
-  "name": "field-base",
+  "name": "@ldfields/field-base",
   "version": "0.0.0",
   "description": "Base field class for LDfields",
   "keywords": [
@@ -11,25 +11,35 @@
     "rdf",
     "owl"
   ],
-  "author": "jeswr <jesse.wright@anu.edu.au>",
+  "author": "Jesse Wright (@jeswr) <jesse.wright@anu.edu.au>",
   "homepage": "https://github.com/schimatos/LDfields#readme",
   "license": "MIT",
-  "main": "lib/field-base.js",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "directories": {
     "lib": "lib",
     "test": "__tests__"
   },
   "files": [
-    "lib"
+    "lib",
+    "types"
   ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/schimatos/LDfields.git"
   },
   "scripts": {
+    "tsc": "tsc",
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "bugs": {
     "url": "https://github.com/schimatos/LDfields/issues"
+  },
+  "devDependencies": {
+    "@ontologies/core": "^2.0.2",
+    "typescript": "^4.1.3"
+  },
+  "dependencies": {
+    "@ontologies/xsd": "^1.0.0"
   }
 }

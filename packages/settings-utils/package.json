@@ -1,0 +1,42 @@
+{
+  "name": "@ldfields/settings-utils",
+  "version": "0.0.0",
+  "description": "Set of utilities to build a settings configuration for LDfields",
+  "keywords": [
+    "input",
+    "form",
+    "field",
+    "utility",
+    "settings"
+  ],
+  "author": "Jesse Wright (@jeswr) <jesse.wright@anu.edu.au>",
+  "homepage": "https://github.com/schimatos/LDfields#readme",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/schimatos/LDfields.git"
+  },
+  "scripts": {
+    "tsc": "tsc",
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/schimatos/LDfields/issues"
+  },
+  "devDependencies": {
+    "@ldfields/delegator": "^0.0.0",
+    "@ontologies/core": "^2.0.2"
+  }
+}

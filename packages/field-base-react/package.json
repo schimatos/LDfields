@@ -1,5 +1,5 @@
 {
-  "name": "field-base-react",
+  "name": "@ldfields/field-base-react",
   "version": "0.0.0",
   "description": "Base field class for React LDfields",
   "keywords": [
@@ -12,10 +12,11 @@
     "owl",
     "React"
   ],
-  "author": "jeswr <jesse.wright@anu.edu.au>",
+  "author": "Jesse Wright (@jeswr) <jesse.wright@anu.edu.au>",
   "homepage": "https://github.com/schimatos/LDfields#readme",
   "license": "MIT",
-  "main": "lib/field-base-react.js",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "directories": {
     "lib": "lib",
     "test": "__tests__"
@@ -28,9 +29,23 @@
     "url": "git+https://github.com/schimatos/LDfields.git"
   },
   "scripts": {
+    "tsc": "tsc",
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "bugs": {
     "url": "https://github.com/schimatos/LDfields/issues"
+  },
+  "dependencies": {
+    "@ldfields/datatype-field-base": "^0.0.0",
+    "@ldfields/field-base": "^0.0.0",
+    "@ontologies/xsd": "^1.0.0",
+    "react": "^17.0.1"
+  },
+  "devDependencies": {
+    "@babel/plugin-syntax-jsx": "^7.12.13",
+    "@babel/preset-react": "^7.12.13",
+    "@ontologies/core": "^2.0.2",
+    "@types/react": "^17.0.1",
+    "typescript": "^4.1.3"
   }
 }

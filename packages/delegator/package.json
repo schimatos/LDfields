@@ -1,5 +1,5 @@
 {
-  "name": "delegator",
+  "name": "@ldfields/delegator",
   "version": "0.0.0",
   "description": "Delegates the fields to be displayed",
   "keywords": [
@@ -11,17 +11,19 @@
     "rdf",
     "owl"
   ],
-  "author": "jeswr <jesse.wright@anu.edu.au>",
+  "author": "Jesse Wright (@jeswr) <jesse.wright@anu.edu.au>",
   "homepage": "https://github.com/schimatos/LDfields#readme",
   "license": "MIT",
   "main": "lib/index.js",
-  "types": "lib/index.d.js",
+  "types": "lib/index.d.ts",
   "directories": {
     "lib": "lib",
+    "types": "types",
     "test": "__tests__"
   },
   "files": [
-    "lib"
+    "lib",
+    "types"
   ],
   "repository": {
     "type": "git",
@@ -35,6 +37,13 @@
     "url": "https://github.com/schimatos/LDfields/issues"
   },
   "dependencies": {
-    "default": "^0.1.1"
+    "@ldfields/datatype-field-base": "^0.0.0",
+    "@ldfields/field-base": "^0.0.0",
+    "@ontologies/xsd": "^1.0.0"
+  },
+  "devDependencies": {
+    "@ldfields/react-generic-basic-input": "^0.0.0",
+    "@ontologies/core": "^2.0.2",
+    "typescript": "^4.1.3"
   }
 }

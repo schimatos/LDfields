@@ -1,6 +1,8 @@
 {
   "packages": [
-    "packages/*"
+    "packages/*",
+    "packages/fields/react/generic/*",
+    "packages/fields/react/standard/*"
   ],
   "version": "0.0.0"
 }
