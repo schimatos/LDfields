@@ -16,7 +16,7 @@ export function InputDelegatorFactory<
   ExtraData = never
 >(
   settings: LDfieldSettings<keyof Props & string>,
-  fields: LDfieldBase<T, Props, ExtraData>[],
+  fields?: LDfieldBase<T, Props, ExtraData>[],
   genericFields?: GenericField<T, Props, ExtraData>[],
   multiControl: boolean = false,
 ): new () => InputDelegator<T, Props, ExtraData> {

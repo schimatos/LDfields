@@ -28,7 +28,7 @@ export class InputDelegator<T, Props extends { [key: string]: string }, ExtraDat
    */
   constructor(
     private settings: LDfieldSettings<keyof Props & string>,
-    fields: LDfieldBase<T, Props>[],
+    fields?: LDfieldBase<T, Props>[],
     genericFields?: GenericField<T, Props, ExtraData>[],
     private multiControl: boolean = false,
     settingsRecord?: Partial<LDfieldSettingsRecord<keyof Props & string>>,

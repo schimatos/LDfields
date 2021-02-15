@@ -3,7 +3,7 @@ import type { Constraints } from './constraints';
 /**
  * The props that are required for the field component of the class
  */
-export interface FieldProps<Props extends { [key: string]: string }> {
+export interface FieldProps<Props extends { [key: string]: string }, ExtraData = never> {
   /**
    * The value props from the field
    */
@@ -23,4 +23,9 @@ export interface FieldProps<Props extends { [key: string]: string }> {
    * The emitted change in value
    */
   onChange: (e: { [key in keyof Props & string]?: string }) => void;
+  /**
+   * Additional data that is needed in order to display the field
+   * e.g. a queryEngine to search for results
+   */
+  data?: ExtraData;
 }

@@ -11,11 +11,15 @@ import { instantiateGenericFields } from './instantiate-generic-fields';
  */
 export function getSortedFields<T, Props extends { [key: string]: string }, ExtraData = never>(
   settings: LDfieldSettings<keyof Props & string>,
-  fields: LDfieldBase<T, Props, ExtraData>[],
+  fields?: LDfieldBase<T, Props, ExtraData>[],
   genericFields?: GenericField<T, Props, ExtraData>[],
 ): LDfieldBase<T, Props, ExtraData>[] {
-  return [
-    ...fields,
-    ...instantiateGenericFields<T, Props, ExtraData>(settings, genericFields),
-  ].sort((a, b) => b.priority - a.priority);
+  if (fields) {
+    return [
+      ...fields,
+      ...instantiateGenericFields<T, Props, ExtraData>(settings, genericFields),
+    ].sort((a, b) => b.priority - a.priority);
+  }
+  return instantiateGenericFields<T, Props, ExtraData>(settings, genericFields)
+    .sort((a, b) => b.priority - a.priority);
 }

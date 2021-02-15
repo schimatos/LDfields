@@ -36,12 +36,14 @@
   },
   "dependencies": {
     "@ldfields/datatype-field-base": "^0.0.0",
+    "@ldfields/delegator": "^0.0.0",
     "@ldfields/field-base": "^0.0.0",
     "@ontologies/xsd": "^1.0.0",
     "react": "^17.0.1"
   },
   "devDependencies": {
     "@ontologies/core": "^2.0.2",
+    "@types/react": "^17.0.2",
     "typescript": "^4.1.3"
   }
 }
