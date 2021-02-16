@@ -36,6 +36,16 @@ export abstract class LDfieldBase<
    */
   targets?: (keyof Props & string)[] | undefined;
 
+  /**
+   * @param priority The priority level with which
+   * the given field is displayed.
+   */
+  constructor(priority?: number) {
+    if (priority !== undefined) {
+      this.priority = priority;
+    }
+  }
+
   get fieldTargets(): (keyof Props & string)[] {
     return this.targets ?? this.modifies;
   }
@@ -48,10 +58,11 @@ export abstract class LDfieldBase<
    * @param data Any additional data that the field requires e.g. queryEngine etc.
    * @return Whether or not the current configuration is supported by the field
    */
-  abstract supports(props: Props, constraints?: Constraints<Props>, data?: ExtraData): boolean;
+  abstract supports(props: Partial<Props>, constraints?: Constraints<Props>, data?: ExtraData):
+    boolean;
 
   /**
    * Used to render the field
    */
-  abstract Field(props: FieldProps<Props>): Rendered;
+  abstract Field(props: FieldProps<Props, ExtraData>): Rendered;
 }

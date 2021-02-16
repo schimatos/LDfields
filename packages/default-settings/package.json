@@ -9,7 +9,7 @@
     "data",
     "rdf",
     "input",
-    "own"
+    "owl"
   ],
   "author": "Jesse Wright (@jeswr) <jesse.wright@anu.edu.au>",
   "homepage": "https://github.com/schimatos/LDfields#readme",
@@ -21,7 +21,8 @@
     "test": "__tests__"
   },
   "files": [
-    "lib"
+    "lib",
+    "types"
   ],
   "repository": {
     "type": "git",

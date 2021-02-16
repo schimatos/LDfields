@@ -9,7 +9,11 @@ import { instantiateGenericFields } from './instantiate-generic-fields';
 /**
  * Delegates the input selections
  */
-export class InputDelegator<T, Props extends { [key: string]: string }, ExtraData = never> {
+export class InputDelegator<
+  T,
+  Props extends { [key: string]: string }, ExtraData = never,
+  FieldConstraints extends Record<string, any> = Record<string, any>
+> {
   private lastDelegation: LDfieldBase<T, Props, ExtraData>[] = [];
 
   private fields: LDfieldBase<T, Props, ExtraData>[];
@@ -60,25 +64,40 @@ export class InputDelegator<T, Props extends { [key: string]: string }, ExtraDat
     );
   }
 
-  delegate = (props: Props, constraints?: Constraints<Props>, data?: ExtraData) => {
-    const { selections: delegation, modifiable, required } = delegate<Props, T, ExtraData>(
-      props,
-      constraints,
-      this.fields,
-      this.multiControl,
-      this.settings,
-      this.settingsRecord,
-      data,
-    );
+  delegate = (
+    props: Partial<Props>,
+    constraints?: Constraints<Props, FieldConstraints>,
+    data?: ExtraData,
+  ) => {
+    const { selections: delegation, modifiable, required } = delegate<
+        Props,
+        T,
+        ExtraData,
+        FieldConstraints
+      >(
+        props,
+        constraints,
+        this.fields,
+        this.multiControl,
+        this.settings,
+        this.settingsRecord,
+        data,
+      );
+    // Used to flag whether the delegation has changed from
+    // the previous call
+    let delegationChange = false;
     if (
       // Testing for change from previous delegation
       this.lastDelegation.length !== delegation.length
       || !this.lastDelegation.every((elem, i) => elem === delegation[i])
     ) {
+      delegationChange = true;
       this.lastDelegation = delegation;
     }
     // If it is same as before, return the previous object, this
     // is to avoid unecessary updates triggered by useReducer in React
-    return { delegation: this.lastDelegation, modifiable, required };
+    return {
+      delegation: this.lastDelegation, modifiable, required, delegationChange,
+    };
   };
 }

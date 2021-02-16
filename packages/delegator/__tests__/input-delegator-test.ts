@@ -1,5 +1,4 @@
 import * as BasicInputSrc from '@ldfields/react-generic-basic-input';
-import type { LDfieldBase } from '@ldfields/field-base/src';
 import { defaultSettings } from './data/settings';
 import {
   getSortedFields,

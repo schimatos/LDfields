@@ -1,291 +1,189 @@
-import type { LDfieldSettings } from '@ldfields/delegator/types';
-import type { GenericField, FieldProps } from '@ldfields/field-base/types';
-import type { LDfieldBase } from '@ldfields/field-base';
+import React, { useEffect, useReducer } from 'react';
+import type { InputDelegator } from '@ldfields/delegator';
 import { InputDelegatorFactory } from '@ldfields/delegator';
-import React from 'react';
+import type { FieldProps } from '@ldfields/field-base/types';
+import type {
+  RendererFactoryProps, ReducerFunction, RendererActions, RendererState, InitParams,
+} from '../types';
+import { initFactory } from './init';
+
+function reducer<
+  Props extends { [key: string]: string; },
+  ExtraData
+>(s: RendererState<Props, ExtraData>, a: RendererActions<Props, ExtraData>):
+  RendererState<Props, ExtraData> {
+  switch (a.type) {
+    case 'propUpdate': {
+      return { ...s, cache: [a.props, ...s.cache], props: a.props };
+    }
+    case 'delegate': {
+      const delegation = s.GetComponent(a.props, a.constraints, a.data);
+      if (!delegation.delegationChange) {
+        return { ...s, ...delegation };
+      }
+      const props: Partial<Props> = {};
+      for (const prop in a.props) {
+        if (delegation.modifiable[prop]) {
+          props[prop] = a.props[prop];
+        }
+      }
+      for (const prop of delegation.required) {
+        if (props[prop] === undefined) {
+          const value = s.cache.find((cache) => cache[prop])?.[prop];
+          if (value !== undefined) {
+            props[prop] = value;
+          } else {
+            // TODO: GET DEFAULT VALUE
+          }
+        }
+      }
+      // TODO: Create function with create constraints
+      if (a.constraints?.restrictions) {
+        for (const p in a.constraints.restrictions) {
+          if (
+            typeof p === 'string'
+            && a.constraints.restrictions[p]?.in !== undefined
+            && !a.constraints.restrictions?.[p]?.in.includes(props[p])
+          ) {
+            props[p as keyof Props] = a.constraints?.restrictions[p]?.in[0];
+          }
+        }
+      }
+      return {
+        ...s,
+        ...delegation,
+        props,
+      };
+    }
+    default: {
+      const action: never = a;
+      throw new Error(`Invalid reducer action ${action}`);
+    }
+  }
+}
+
+function useRendererReducer<
+  Props extends { [key: string]: string; },
+  ExtraData = never
+>(
+  Delegator: new () => InputDelegator<JSX.Element, Props, ExtraData, Record<string, any>>,
+  ...props: InitParams<Props, ExtraData>
+) {
+  return useReducer<
+        ReducerFunction<Props, ExtraData>,
+        InitParams<Props, ExtraData>
+      >(
+        reducer,
+        props,
+        initFactory<Props, ExtraData>(Delegator),
+      );
+}
 
 export function LDfieldRendererFactory<
-  Rendered,
   Props extends { [key: string]: string; },
   ExtraData = never
 >({
-  settings,
-  fields,
-  genericFields,
-}: {
-  settings: LDfieldSettings<keyof Props & string>;
-  fields?: LDfieldBase<Rendered, Props, ExtraData>[];
-  genericFields?: GenericField<Rendered, Props, ExtraData>[];
-}) {
+  settings, fields, genericFields, defaultProps,
+}: RendererFactoryProps<Props, ExtraData>) {
   const InputDelegator = InputDelegatorFactory(settings, fields, genericFields);
+
   return function Renderer({
-    props,
-    constraints,
-    onChange,
-    data,
+    props, constraints, onChange, data,
   }: FieldProps<Props, ExtraData>) {
-    // @ts-ignore
-    const [
-      {
-        Component, components, delegator, propsCache,
-      },
-      dispatch,
-    ] = useReducer<(
-      s: {
-          components;
-          delegator;
-        },
-      a: {
-          props;
-          constraints?;
-        }
-    ) => {
-        components;
-        delegator;
-      }
-      >(
-      (s, a) => {
-        // TODO: Implement this so that property caching works
-        // @ts-ignore
-        if (a.type === 'propUpdate') {
-          return {
-            ...s,
-            propsCache: {
-              // @ts-ignore
-              ...s.propsCache,
-              // @ts-ignore
-              ...a.props,
-            },
-          };
-        }
-        const components = s.delegator.delegate(a.props, a.constraints);
-        if (components === s.components) {
-          // console.log("not refreshed");
-          return s;
-        }
-        // console.log("refreshing");
-        const toUnCache = {};
-        let runUnCache = false;
-        for (const delegation of components.delegation) {
-          for (const elem of delegation.modifies) {
-            // @ts-ignore
-            if (
-              typeof props[elem] !== 'string'
-              // @ts-ignore
-              && typeof s.propsCache[elem] === 'string'
-            ) {
-              runUnCache = true;
-              // @ts-ignore
-              toUnCache[elem] = s.propsCache[elem];
-            }
-          }
-        }
-        if (runUnCache) {
-          const values = { ...toUnCache, ...props };
-          const output = {};
-          for (const elem in values) {
-            // console.log(components);
-            // @ts-ignore
-            if (components.modifiable[elem]) {
-              output[elem] = values[elem];
-            }
-          }
-          // TODOL Clean up
-          // onChange(output)
-        }
-        return {
-          delegator: s.delegator,
-          // @ts-ignore
-          propsCache: s.propsCache,
-          components,
-          Component: ComponentFactory(components),
-        };
-      },
-      // @ts-ignore
-      [props, constraints, data],
-      init(settings, fields, genericFields),
-      );
+    const [{ Component, ...state }, dispatch] = useRendererReducer<Props, ExtraData>(
+      InputDelegator, props, constraints, data,
+    );
 
     // TODO: add test for error case
     // encountered where this overrides change
     // during render
     useEffect(() => {
-      // @ts-ignore
-      dispatch({ props, constraints });
-      // TODO: Do this in general and less hacky
-      const newProps = { ...props };
-      let changed = false;
-      if (constraints?.restrictions) {
-        for (const p in constraints.restrictions) {
-          if (
-            'in' in constraints.restrictions[p]
-            && !constraints.restrictions[p].in.includes(props[p])
-          ) {
-            changed = true;
-            newProps[p] = constraints.restrictions[p].in[0];
-            // onChange({ [p]: constraints.restrictions[p].in[0] })
-          }
-        }
-      }
-      if (changed) {
-        console.log('on change issued by usee effect', [JSON.stringify(props), JSON.stringify(constraints ?? '')]);
-        // onChange(newProps);
-      }
+      dispatch({ props, constraints, type: 'delegate' });
     }, [JSON.stringify(props), JSON.stringify(constraints ?? '')]);
 
-    // const [propsCache, setProps] = useReducer((s, a) => {
-    //   return { ...s, ...a }
-    // }, {})
-
-    // useEffect(() => {
-    //   setProps(props);
-    // }, [JSON.stringify(props)])
-
-    // useEffect(() => {
-    //   // @ts-ignore
-    // for (const delegation of components.delegation) {
-    //   for (const elem of delegation.modifies) {
-    //     if (typeof props[elem] !== 'string' && typeof propsCache[elem] === 'string') {
-    //       onChange({ elem: propsCache[elem] })
-    //     }
-    //   }
-    // }
-
-    //   // @ts-ignore
-    // }, [components.delegation])
-
-    // console.log("inside field customiser", props, components);
     return (
-      <fieldset onBlur={() => {
-        // TODO: Fix this - it is only a temporary solution
-        // @ts-ignore
-        const values = { ...props, ...propsCache };
-        // @ts-ignore
-        let nextComponents = delegator.delegate(
-          values,
-          constraints,
-        );
-        const output = {};
-        for (const elem in values) {
-          // console.log(components);
-          // @ts-ignore
-          if (nextComponents.modifiable[elem]) {
-            output[elem] = values[elem];
-          }
-        }
-        let changeMade = true;
-        while (changeMade) {
-          changeMade = false;
-          // @ts-ignore
-          nextComponents = delegator.delegate(output, constraints);
-          for (const modifier of nextComponents.required) {
-            if (
-              typeof output[modifier] !== 'string'
-                && typeof propsCache[modifier] === 'string'
-            ) {
-              changeMade = true;
-              // console.log(
-              //   modifier,
-              //   output[modifier],
-              //   propsCache[modifier]
-              // );
-              output[modifier] = propsCache[modifier];
-            }
-          }
-        }
-
-        // TODO: Add 'inferencing' here
-
-        // delegator.delegate(output, constraints);
-
-        console.log('onChange issued by field');
-        // onChange(output);
-      }}>
-        {
-          // @ts-ignore
-          components.delegation.map((Field, i) => {
-            const newProps = {};
-            for (const elem of Field.modifies) {
-              if (typeof props[elem] !== 'string') {
-                newProps[elem] = '';
-              } else {
-                newProps[elem] = props[elem];
-              }
-            }
-            // console.log(Field.id, newProps, props, components);
-            return (
-              <>
-                <Field.Field
-                  // TODO: Check key selection
-                  // Getting erros with just field.id
-                  // which SHOULD NOT HAPPEN
-                  key={
-                    // shortid()
-                    `${Field.id}-${i}-${shortid()}`
-                  }
-                  props={newProps}
-                  constraints={constraints}
-                  data={data}
-                  onChange={(p) => {
-                    const values = { ...props, ...p };
-                    // @ts-ignore
-                    let nextComponents = delegator.delegate(
-                      values,
-                      constraints,
-                    );
-                    const output = {};
-                    for (const elem in values) {
-                      // console.log(components);
-                      // @ts-ignore
-                      if (nextComponents.modifiable[elem]) {
-                        output[elem] = values[elem];
-                      }
-                    }
-                    let changeMade = true;
-                    while (changeMade) {
-                      changeMade = false;
-                      // @ts-ignore
-                      nextComponents = delegator.delegate(output, constraints);
-                      for (const modifier of nextComponents.required) {
-                        if (
-                          typeof output[modifier] !== 'string'
-                          && typeof propsCache[modifier] === 'string'
-                        ) {
-                          changeMade = true;
-                          // console.log(
-                          //   modifier,
-                          //   output[modifier],
-                          //   propsCache[modifier]
-                          // );
-                          output[modifier] = propsCache[modifier];
-                        }
-                      }
-                    }
-
-                    // TODO: Add 'inferencing' here
-
-                    // delegator.delegate(output, constraints);
-
-                    // @ts-ignore
-                    dispatch({
-                      type: 'propUpdate',
-                      props: p,
-                    });
-                    console.log('onChange issued by field');
-                    onChange(output);
-                  }}
-                />
-              </>
-            );
-          })
-        }
+      <fieldset onBlur={() => { onChange(state.props); }}>
+        <Component
+          props={{ ...defaultProps, ...state.props }}
+          data={data}
+          onChange={(p: Partial<Props>) => {
+            const update: RendererActions<Props, ExtraData> = {
+              type: 'propUpdate',
+              props: p,
+            };
+            dispatch(update);
+          }}
+        />
       </fieldset>
-      // @ts-ignore
-      // <Component
-      //   props={props}
-      //   constraints={constraints}
-      //   onChange={onChange}
-      // />
     );
   };
 }
+
+// {
+//   // @ts-ignore
+//   components.delegation.map((Field, i) => {
+//     const newProps = {};
+//     for (const elem of Field.modifies) {
+//       if (typeof props[elem] !== 'string') {
+//         newProps[elem] = '';
+//       } else {
+//         newProps[elem] = props[elem];
+//       }
+//     }
+//     return (
+//       <>
+//         <Field.Field
+//           // TODO: Check key selection
+//           // Getting erros with just field.id
+//           // which SHOULD NOT HAPPEN
+//           key={
+//             // shortid()
+//             `${Field.id}-${i}-${shortid()}`
+//           }
+//           props={newProps}
+//           constraints={constraints}
+//           data={data}
+//           onChange={(p) => {
+//             const values = { ...props, ...p };
+//             let nextComponents = delegator.delegate(
+//               values,
+//               constraints,
+//             );
+//             const output = {};
+//             for (const elem in values) {
+//               // console.log(components);
+//               // @ts-ignore
+//               if (nextComponents.modifiable[elem]) {
+//                 output[elem] = values[elem];
+//               }
+//             }
+//             let changeMade = true;
+//             while (changeMade) {
+//               changeMade = false;
+//               // @ts-ignore
+//               nextComponents = delegator.delegate(output, constraints);
+//               for (const modifier of nextComponents.required) {
+//                 if (
+//                   typeof output[modifier] !== 'string'
+//                   && typeof propsCache[modifier] === 'string'
+//                 ) {
+//                   changeMade = true;
+//                   output[modifier] = state.cache[modifier];
+//                 }
+//               }
+//             }
+
+//             // TODO: Add 'inferencing' here
+
+//             // @ts-ignore
+// dispatch({
+//   type: 'propUpdate',
+//   props: p,
+// });
+//             onChange(output);
+//           }}
+//         />
+//       </>
+//     );
+//   })
+// }

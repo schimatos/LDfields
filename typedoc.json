@@ -1,0 +1,11 @@
+{
+  "name": "LDfields",
+  "mode": "modules",
+  "out": "doc",
+  "theme": "default",
+  "ignoreCompilerErrors": "false",
+  "preserveConstEnums": "true",
+  "exclude": "*.spec.ts",
+  "external-modulemap": ".*packages\/(@ldfields\/[^\/]+)\/.*",
+  "stripInternal": "false"
+}

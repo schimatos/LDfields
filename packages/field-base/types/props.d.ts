@@ -22,7 +22,7 @@ export interface FieldProps<Props extends { [key: string]: string }, ExtraData =
   /**
    * The emitted change in value
    */
-  onChange: (e: { [key in keyof Props & string]?: string }) => void;
+  onChange: (e: Partial<Props>) => void;
   /**
    * Additional data that is needed in order to display the field
    * e.g. a queryEngine to search for results

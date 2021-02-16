@@ -1,5 +1,5 @@
 import { LDfieldBase } from '@ldfields/field-base';
-import type { GenericField } from '@ldfields/field-base/types';
+// import type { GenericField } from '@ldfields/field-base/types';
 
 export abstract class LDfieldGenericBase<
   Rendered,
@@ -10,8 +10,8 @@ export abstract class LDfieldGenericBase<
   // GenericField<Rendered, Props, ExtraData> should be the signature
   // of the constructor.
   // implements GenericField<Rendered, Props, ExtraData>
-  constructor(public modifier: keyof Props & string) {
-    super();
+  constructor(public modifier: keyof Props & string, priority?: never) {
+    super(priority);
   }
 
   get modifies() {

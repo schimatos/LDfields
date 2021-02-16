@@ -5,24 +5,8 @@ import {
   createInCondition,
   generateLDfieldSetting,
 } from '@ldfields/settings-utils';
-
-// TODO: Import this from on2ts
-const enum rdf {
-  type = 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type',
-  langString = 'http://www.w3.org/1999/02/22-rdf-syntax-ns#langString'
-}
-
-const enum rdfs {
-  label = 'http://www.w3.org/1999/02/22-rdf-syntax-ns#label'
-}
-
-type PropTerm =
-  | 'value'
-  | 'termType'
-  | 'datatype'
-  | 'language'
-  | rdf.type
-  | rdfs.label
+import type { PropTerm } from '../types';
+import { rdf, rdfs } from './enums';
 
 /**
  * The default settings for the LDfield

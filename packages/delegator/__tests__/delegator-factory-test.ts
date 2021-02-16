@@ -1,7 +1,5 @@
-import { defaultSettings, defaultSettingsAsRecord } from './data/settings';
 import {
   InputDelegatorFactory,
-  delegate,
 } from '../src';
 import * as sortedFieldsSrc from '../src/get-sorted-fields';
 import * as settingsRecordSrc from '../src/settings-to-record';
@@ -21,16 +19,18 @@ describe('Testing delegator factory', () => {
 
   it('Should delegate empty arrays to empty parameters', () => {
     expect(firstDelegation).toEqual({
-      delegation: [], modifiable: {}, required: [],
+      // Note that delegationChange is false since the default delegation is [],
+      // TODO [FUTURE]: See if this is the *wanted* behavior
+      delegation: [], modifiable: {}, required: [], delegationChange: false,
     });
     expect(secondDelegation).toEqual({
-      delegation: [], modifiable: {}, required: [],
+      delegation: [], modifiable: {}, required: [], delegationChange: false,
     });
     expect(thirdDelegation).toEqual({
-      delegation: [], modifiable: {}, required: [],
+      delegation: [], modifiable: {}, required: [], delegationChange: false,
     });
     expect(fourthDelegation).toEqual({
-      delegation: [], modifiable: {}, required: [],
+      delegation: [], modifiable: {}, required: [], delegationChange: false,
     });
   });
   it('Should return the *same object* when there is no change to the delegation result', () => {

@@ -19,7 +19,7 @@ export class GenericDatatypeField<
   };
 
   // eslint-disable-next-line class-methods-use-this
-  Field({ props, onChange }: FieldProps<Props>) {
+  Field({ props, onChange }: FieldProps<Props, ExtraData>) {
     // TODO: Bring in min count, min length etc.
     return (
       <input

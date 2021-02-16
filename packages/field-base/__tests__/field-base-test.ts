@@ -1,5 +1,4 @@
 import { LDfieldBase } from '../src';
-import { FieldProps } from '../types';
 
 describe('field-base', () => {
   class MyField extends LDfieldBase<string, { [key: string]: string }> {

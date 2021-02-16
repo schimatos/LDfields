@@ -25,7 +25,7 @@ export class BasicInput<
           }}
           onBlur={() => {
             // TODO [Future]: Remove type casting
-            onChange({ [this.modifier]: value } as { [key in keyof Props & string]?: string });
+            onChange({ [this.modifier]: value } as Partial<Props>);
           }}
         />
       </>

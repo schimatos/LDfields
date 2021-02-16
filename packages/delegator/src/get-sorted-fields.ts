@@ -14,12 +14,10 @@ export function getSortedFields<T, Props extends { [key: string]: string }, Extr
   fields?: LDfieldBase<T, Props, ExtraData>[],
   genericFields?: GenericField<T, Props, ExtraData>[],
 ): LDfieldBase<T, Props, ExtraData>[] {
-  if (fields) {
-    return [
-      ...fields,
-      ...instantiateGenericFields<T, Props, ExtraData>(settings, genericFields),
-    ].sort((a, b) => b.priority - a.priority);
-  }
-  return instantiateGenericFields<T, Props, ExtraData>(settings, genericFields)
-    .sort((a, b) => b.priority - a.priority);
+  return (fields ? [
+    ...fields,
+    ...instantiateGenericFields<T, Props, ExtraData>(settings, genericFields),
+  ] : instantiateGenericFields<T, Props, ExtraData>(settings, genericFields)).sort(
+    (a, b) => b.priority - a.priority,
+  );
 }

@@ -6,9 +6,14 @@ import { getConditions } from './check-conditions';
 /**
  * Delegates the fields which are to be displayed
  */
-export function delegate<Props extends { [key: string]: string }, Rendered, ExtraData>(
-  props: Props,
-  constraints: Constraints<Props> = {},
+export function delegate<
+  Props extends { [key: string]: string },
+  Rendered,
+  ExtraData,
+  FieldConstraints extends Record<string, any> = Record<string, any>
+>(
+  props: Partial<Props>,
+  constraints: Constraints<Props, FieldConstraints> = {},
   fields: LDfieldBase<Rendered, Props, ExtraData>[],
   multiControl: boolean,
   settings: LDfieldSettings<keyof Props & string>,

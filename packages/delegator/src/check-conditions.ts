@@ -17,7 +17,7 @@ import type {
 export function getConditions<Props extends { [key: string]: string }>(
   settings: LDfieldSettings<keyof Props & string>,
   settingsRecord: Partial<LDfieldSettingsRecord<keyof Props & string>>,
-  props: Record<keyof Props & string, string>,
+  props: Partial<Record<keyof Props & string, string>>,
 ) {
   /**
    * Cache to record whether each allowed/required
