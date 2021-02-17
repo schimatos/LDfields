@@ -9,7 +9,11 @@ import { instantiateGenericFields } from './instantiate-generic-fields';
  * @param fields The standard fields
  * @param genericFields The generic fields
  */
-export function getSortedFields<T, Props extends { [key: string]: string }, ExtraData = never>(
+export function getSortedFields<
+  T,
+  Props extends { [key: string]: string | undefined},
+  ExtraData = never
+>(
   settings: LDfieldSettings<keyof Props & string>,
   fields?: LDfieldBase<T, Props, ExtraData>[],
   genericFields?: GenericField<T, Props, ExtraData>[],

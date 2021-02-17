@@ -20,13 +20,14 @@ export class GenericDatatypeField<
 
   // eslint-disable-next-line class-methods-use-this
   Field({ props, onChange }: FieldProps<Props, ExtraData>) {
-    // TODO: Bring in min count, min length etc.
+    // TODO [Future]: Bring in min count, min length etc.
     return (
       <input
         type={props.datatype === xsd.dateTime.value ? 'dateTime' : 'number'}
         value={props.value}
         onChange={(e) => {
-          onChange({ value: e.target.value });
+          // TODO [Future]: Remove type casting here
+          onChange({ value: e.target.value } as Partial<Props>);
         }}
       />
     );

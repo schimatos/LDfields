@@ -3,7 +3,7 @@
  * LDfield.
  */
 export interface Constraints<
-  Props extends Record<string, string> = Record<string, string>,
+  Props extends Record<string, string | undefined> = Record<string, string | undefined>,
   FieldConstraints extends Record<string, any> = Record<string, any>
 > {
   /**

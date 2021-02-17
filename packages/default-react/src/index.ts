@@ -14,7 +14,9 @@ const defaultProps: Props = {
   [rdfs.label]: '',
 };
 
-export default LDfieldRendererFactory({ settings, genericFields, fields, defaultProps });
+export default LDfieldRendererFactory<Props>({
+  settings, genericFields, fields, defaultProps,
+});
 
 export {
   fields,

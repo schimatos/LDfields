@@ -6,7 +6,10 @@ import type { FieldProps } from '@ldfields/field-base/types';
  * Renders the set of components based on the delegated fields.
  * @param components The set of LDfield bases.
  */
-export function ComponentFactory<Props extends { [key: string]: string; }, ExtraData = never>(
+export function ComponentFactory<
+  Props extends { [key: string]: string | undefined; },
+  ExtraData = never
+>(
   components: LDfieldBase<JSX.Element, Props, ExtraData>[],
 ) {
   return ({ onChange, ...props }: FieldProps<Props, ExtraData>) => (

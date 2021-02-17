@@ -9,7 +9,7 @@ import type { LDfieldSettings } from '../types';
  */
 export function instantiateGenericFields<
   T,
-  Props extends { [key: string]: string },
+  Props extends { [key: string]: string | undefined},
   ExtraData = never
 >(
   settings: LDfieldSettings<keyof Props & string>,

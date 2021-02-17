@@ -2,7 +2,7 @@ import type { Constraints, FieldProps } from '@ldfields/field-base/types';
 import type { InitParams } from './init-params';
 
 interface GetComponentOut<
-  Props extends { [key: string]: string; },
+  Props extends { [key: string]: string | undefined; },
   ExtraData = never
 > {
   Component: (props: FieldProps<Props, ExtraData>) => JSX.Element;
@@ -12,7 +12,7 @@ interface GetComponentOut<
 }
 
 export type RendererState<
-  Props extends { [key: string]: string; },
+  Props extends { [key: string]: string | undefined; },
   ExtraData = never
 > = {
   GetComponent: (...props: InitParams<Props, ExtraData>) => GetComponentOut<Props, ExtraData>
@@ -20,13 +20,15 @@ export type RendererState<
   props: Partial<Props>;
 } & GetComponentOut<Props, ExtraData>
 
-export interface RendererActionsPropUpdate<Props extends { [key: string]: string; }> {
+export interface RendererActionsPropUpdate<
+  Props extends { [key: string]: string | undefined; }
+> {
   type: 'propUpdate'
   props: Partial<Props>;
 }
 
 export interface RendererActionsDelegate<
-  Props extends { [key: string]: string; },
+  Props extends { [key: string]: string | undefined; },
   ExtraData = never
 > {
   type: 'delegate'
@@ -36,14 +38,14 @@ export interface RendererActionsDelegate<
 }
 
 export type RendererActions<
-  Props extends { [key: string]: string; },
+  Props extends { [key: string]: string | undefined; },
   ExtraData = never
 > =
   | RendererActionsPropUpdate<Props>
   | RendererActionsDelegate<Props, ExtraData>
 
 export type ReducerFunction<
-  Props extends { [key: string]: string; },
+  Props extends { [key: string]: string | undefined; },
   ExtraData = never
 > = (
   s: RendererState<Props, ExtraData>, a: RendererActions<Props, ExtraData>

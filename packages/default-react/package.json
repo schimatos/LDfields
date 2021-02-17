@@ -42,6 +42,7 @@
     "@ldfields/react-renderer": "^0.0.0"
   },
   "devDependencies": {
-    "@ldfields/field-base": "^0.0.0"
+    "@ldfields/field-base": "^0.0.0",
+    "typescript": "^4.1.5"
   }
 }

@@ -11,7 +11,8 @@ import { instantiateGenericFields } from './instantiate-generic-fields';
  */
 export class InputDelegator<
   T,
-  Props extends { [key: string]: string }, ExtraData = never,
+  Props extends { [key: string]: string | undefined},
+  ExtraData = never,
   FieldConstraints extends Record<string, any> = Record<string, any>
 > {
   private lastDelegation: LDfieldBase<T, Props, ExtraData>[] = [];

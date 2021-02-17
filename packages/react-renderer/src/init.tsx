@@ -4,7 +4,7 @@ import type { GetComponentOut, InitParams, RendererState } from '../types';
 import { ComponentFactory } from './component-factory';
 
 class ReactInputDelegator<
-  Props extends { [key: string]: string; },
+  Props extends { [key: string]: string | undefined; },
   ExtraData = never
 > {
   GetComponent: (...[props, constraints, data]: InitParams<Props, ExtraData>) => GetComponentOut<
@@ -46,7 +46,7 @@ class ReactInputDelegator<
  * @param InputDelegator LDfield input delegator.
  */
 export function initFactory<
-  Props extends { [key: string]: string; },
+  Props extends { [key: string]: string | undefined; },
   ExtraData = never
 >(
   InputDelegator: new () => InputDelegator<

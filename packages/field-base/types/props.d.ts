@@ -3,7 +3,11 @@ import type { Constraints } from './constraints';
 /**
  * The props that are required for the field component of the class
  */
-export interface FieldProps<Props extends { [key: string]: string }, ExtraData = never> {
+export interface FieldProps<
+  Props extends { [key: string]: string | undefined },
+  ExtraData = never,
+  T extends Partial<Props> = Partial<Props>
+> {
   /**
    * The value props from the field
    */
@@ -22,7 +26,7 @@ export interface FieldProps<Props extends { [key: string]: string }, ExtraData =
   /**
    * The emitted change in value
    */
-  onChange: (e: Partial<Props>) => void;
+  onChange: (e: T) => void;
   /**
    * Additional data that is needed in order to display the field
    * e.g. a queryEngine to search for results

@@ -4,16 +4,18 @@ import type { FieldProps } from '@ldfields/field-base/types';
 import { useState } from '@jeswr/use-state';
 
 export class BasicInput<
-  Props extends { [key: string]: string; }
+  Props extends { [key: string]: string | undefined; },
+  ExtraData = never,
+
 > extends LDfieldGenericBase<JSX.Element, Props> {
   supports() {
     return true;
   }
 
-  Field = ({ props, onChange }: FieldProps<Props>) => {
-    const [value, setValue] = useState<string>(props[this.modifier]);
+  Field = ({ props, onChange }: FieldProps<Props, ExtraData>) => {
+    const [value, setValue] = useState<string>(props[this.modifier] ?? '');
     useEffect(() => {
-      setValue(props.value);
+      setValue(props.value ?? '');
     }, [props.value]);
     return (
       <>

@@ -3,7 +3,7 @@ import type { GenericField } from '@ldfields/field-base/types';
 import type { LDfieldBase } from '@ldfields/field-base';
 
 export interface RendererFactoryProps<
-  Props extends { [key: string]: string; },
+  Props extends { [key: string]: string | undefined; },
   ExtraData = never
 > {
   settings: LDfieldSettings<keyof Props & string>;

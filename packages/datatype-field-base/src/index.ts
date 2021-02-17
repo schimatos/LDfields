@@ -9,7 +9,7 @@ export abstract class DatatypeInput<
     termType: string;
     datatype: string;
     value: string;
-    [key: string]: string;
+    [key: string]: string | undefined;
   },
   ExtraData = never
 > extends LDfieldBase<Rendered, Props, ExtraData> {

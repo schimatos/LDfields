@@ -10,17 +10,19 @@ enum rdfs {
   label = 'http://www.w3.org/2000/01/rdf-schema#label',
 }
 
-export function getAnnotations<
-  Props extends { [key: string]: string; }
->(metadata: Props, term: NamedNode | BlankNode) {
+export function getAnnotations<Props extends { [key: string]: string | undefined; }>(
+  metadata: Props,
+  term: NamedNode | BlankNode,
+) {
   const annotations = [];
-  if (rdf.type in metadata) {
+  const { [rdf.type]: type, [rdfs.label]: label } = metadata;
+  if (typeof type === 'string') {
     // TODO [Future]: Handle case where class is a blank node
-    annotations.push(quad(term, namedNode(rdf.type), namedNode(metadata[rdf.type])));
+    annotations.push(quad(term, namedNode(rdf.type), namedNode(type)));
   }
-  if (rdfs.label in metadata) {
+  if (typeof label === 'string') {
     annotations.push(
-      quad(term, namedNode(rdfs.label), literal(metadata[rdfs.label], metadata.language)),
+      quad(term, namedNode(rdfs.label), literal(label, metadata.language)),
     );
   }
   return annotations;

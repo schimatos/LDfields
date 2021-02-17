@@ -3,7 +3,7 @@ import { LDfieldBase } from '@ldfields/field-base';
 
 export abstract class LDfieldGenericBase<
   Rendered,
-  Props extends { [key: string]: string; },
+  Props extends { [key: string]: string | undefined; },
   ExtraData = never,
 > extends LDfieldBase<Rendered, Props, ExtraData> {
   // TODO [Future]: Express what is below as a type constraint.

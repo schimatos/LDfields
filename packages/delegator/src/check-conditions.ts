@@ -14,7 +14,7 @@ import type {
  * @return A list of the required fields (and order in which they)
  * should appear *and* a record of the *allowed* fields
  */
-export function getConditions<Props extends { [key: string]: string }>(
+export function getConditions<Props extends { [key: string]: string | undefined}>(
   settings: LDfieldSettings<keyof Props & string>,
   settingsRecord: Partial<LDfieldSettingsRecord<keyof Props & string>>,
   props: Partial<Record<keyof Props & string, string>>,

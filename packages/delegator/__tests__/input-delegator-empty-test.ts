@@ -18,16 +18,17 @@ describe('Testing delegator factory', () => {
 
   it('Should delegate empty arrays to empty parameters', () => {
     expect(firstDelegation).toEqual({
-      delegation: [], modifiable: {}, required: [],
+      // TODO [FUTURE]: See if this would be better as true (false since default delegation is [])
+      delegation: [], modifiable: {}, required: [], delegationChange: false,
     });
     expect(secondDelegation).toEqual({
-      delegation: [], modifiable: {}, required: [],
+      delegation: [], modifiable: {}, required: [], delegationChange: false,
     });
     expect(thirdDelegation).toEqual({
-      delegation: [], modifiable: {}, required: [],
+      delegation: [], modifiable: {}, required: [], delegationChange: false,
     });
     expect(fourthDelegation).toEqual({
-      delegation: [], modifiable: {}, required: [],
+      delegation: [], modifiable: {}, required: [], delegationChange: false,
     });
   });
   it('Should return the *same object* when there is no change to the delegation result', () => {

@@ -7,7 +7,7 @@ import { getConditions } from './check-conditions';
  * Delegates the fields which are to be displayed
  */
 export function delegate<
-  Props extends { [key: string]: string },
+  Props extends { [key: string]: string | undefined},
   Rendered,
   ExtraData,
   FieldConstraints extends Record<string, any> = Record<string, any>

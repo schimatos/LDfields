@@ -6,7 +6,7 @@ import type { Constraints, FieldProps } from '../types';
  */
 export abstract class LDfieldBase<
   Rendered,
-  Props extends { [key: string]: string },
+  Props extends { [key: string]: string | undefined },
   ExtraData = never
 > {
   /**

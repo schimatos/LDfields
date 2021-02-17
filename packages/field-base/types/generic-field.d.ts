@@ -6,6 +6,6 @@ import type { LDfieldBase } from '../src/field-base';
  */
 export type GenericField<
   T,
-  Props extends { [key: string]: string },
+  Props extends { [key: string]: string | undefined;},
   ExtraData = null
 > = new (field: keyof Props & string) => LDfieldBase<T, Props, ExtraData>;

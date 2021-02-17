@@ -8,7 +8,7 @@ import type {
 import { initFactory } from './init';
 
 function reducer<
-  Props extends { [key: string]: string; },
+  Props extends { [key: string]: string | undefined; },
   ExtraData
 >(s: RendererState<Props, ExtraData>, a: RendererActions<Props, ExtraData>):
   RendererState<Props, ExtraData> {
@@ -63,7 +63,7 @@ function reducer<
 }
 
 function useRendererReducer<
-  Props extends { [key: string]: string; },
+  Props extends { [key: string]: string | undefined; },
   ExtraData = never
 >(
   Delegator: new () => InputDelegator<JSX.Element, Props, ExtraData, Record<string, any>>,
@@ -80,7 +80,7 @@ function useRendererReducer<
 }
 
 export function LDfieldRendererFactory<
-  Props extends { [key: string]: string; },
+  Props extends { [key: string]: string | undefined; },
   ExtraData = never
 >({
   settings, fields, genericFields, defaultProps,

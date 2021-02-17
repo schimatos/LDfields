@@ -12,7 +12,7 @@ import { settingsToRecord } from './settings-to-record';
  */
 export function InputDelegatorFactory<
   T,
-  Props extends { [key: string]: string },
+  Props extends { [key: string]: string | undefined },
   ExtraData = never
 >(
   settings: LDfieldSettings<keyof Props & string>,
