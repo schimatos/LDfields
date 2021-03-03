@@ -1,5 +1,8 @@
 import { BasicInput } from '@ldfields/react-generic-basic-input';
+import type { GenericField } from '@ldfields/field-base/types';
+import type { Props } from '@ldfields/default-settings/types';
+import type { ExtraData } from './index';
 
-export const genericFields = [
+export const genericFields: GenericField<JSX.Element, Props, ExtraData>[] = [
   BasicInput,
 ];

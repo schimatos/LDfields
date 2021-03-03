@@ -1,29 +1,32 @@
 {
-  "name": "@ldfields/default-settings",
+  "name": "@ldfields/react-generic-search",
   "version": "0.0.0",
-  "description": "Default settings for use with LDfields",
+  "description": "Input field for searching data, for use with LDfields in react",
   "keywords": [
     "LDfields",
-    "settings",
     "linked",
     "data",
-    "rdf",
     "input",
-    "owl"
+    "rdf",
+    "owl",
+    "form",
+    "React"
   ],
-  "author": "Jesse Wright (@jeswr) <jesse.wright@anu.edu.au>",
+  "author": "jeswr <jesse.wright@anu.edu.au>",
   "homepage": "https://github.com/schimatos/LDfields#readme",
   "license": "MIT",
   "main": "lib/index.js",
-  "types": "lib/index.d.ts",
+  "types": "lib/types.d.js",
   "directories": {
     "lib": "lib",
     "test": "__tests__"
   },
   "files": [
-    "lib",
-    "types"
+    "lib"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/schimatos/LDfields.git"
@@ -35,11 +38,5 @@
   },
   "bugs": {
     "url": "https://github.com/schimatos/LDfields/issues"
-  },
-  "dependencies": {
-    "@ldfields/settings-utils": "^0.0.0"
-  },
-  "devDependencies": {
-    "@ldfields/delegator": "^0.0.0"
   }
 }

@@ -1,0 +1,14 @@
+{
+  "anyURI" : "text",
+  "string" : "text",
+  "boolean" : "checkbox",
+  "decimal" : "number",
+  "double" : "number",
+  "float" : "number",
+  "date" : "date",
+  "dateTime" : "datetime-local",
+  "time" : "time",
+  "gYear" : "number",
+  "duration" : "number",
+  "hexBinary" : "text"
+}

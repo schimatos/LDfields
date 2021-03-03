@@ -8,10 +8,11 @@ export interface FieldProps<
   ExtraData = never,
   T extends Partial<Props> = Partial<Props>
 > {
+  // TODO: Double check change of Props -> T here
   /**
    * The value props from the field
    */
-  props: Props;
+  props: T;
   /**
    * Any constraints that apply to the field
    * (pattern, in constraint etc.)

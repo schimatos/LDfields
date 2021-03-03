@@ -12,7 +12,7 @@ export function singleCheck<T extends string>(
   // Used to ensure that the 'check' function is only run once
   let checked: boolean;
   function lazyCheck() {
-    if (checked !== undefined) {
+    if (checked === undefined) {
       checked = check(fieldFor, type);
     }
     return checked;
@@ -32,7 +32,7 @@ export function singleCheck<T extends string>(
       return props[fieldFor] === undefined || !lazyCheck();
     default: {
       const type: never = condition;
-      throw new Error(`Invalid condition type: ${type}`);
+      throw new Error(`Invalid condition type: ${(type as LDfieldConditionNonStatic<T>).type}`);
     }
   }
 }

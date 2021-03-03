@@ -30,6 +30,8 @@
     "url": "git+https://github.com/schimatos/LDfields.git"
   },
   "scripts": {
+    "tsc": "tsc",
+    "build": "tsc",
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "bugs": {
@@ -37,12 +39,16 @@
   },
   "dependencies": {
     "@ldfields/default-settings": "^0.0.0",
+    "@ldfields/props-rdf-conversion": "^0.0.0",
     "@ldfields/react-datatype-field": "^0.0.0",
     "@ldfields/react-generic-basic-input": "^0.0.0",
-    "@ldfields/react-renderer": "^0.0.0"
+    "@ldfields/react-renderer": "^0.0.0",
+    "react": "^17.0.1"
   },
   "devDependencies": {
+    "@comunica/actor-init-sparql": "^1.19.2",
     "@ldfields/field-base": "^0.0.0",
+    "@types/react": "17.0.1",
     "typescript": "^4.1.5"
   }
 }

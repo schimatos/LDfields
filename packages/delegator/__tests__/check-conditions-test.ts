@@ -67,7 +67,17 @@ describe('Testing algorithmic complexity', () => {
     );
     expect(singleCheck).toHaveBeenCalled();
     // TODO: Remove magic number; it should *not* be increased
-    expect(singleCheck).toHaveBeenCalledTimes(5);
+    let conditions = 0;
+    for (const setting of defaultSettings) {
+      const { allowed, required } = setting.condition;
+      if (typeof allowed === 'object') {
+        conditions += allowed.length;
+      }
+      if (typeof required === 'object') {
+        conditions += required.length;
+      }
+    }
+    expect(singleCheck.mock.calls.length).toBeLessThanOrEqual(conditions);
   });
 });
 

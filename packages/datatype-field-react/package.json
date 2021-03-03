@@ -30,6 +30,8 @@
   },
   "scripts": {
     "tsc": "tsc",
+    "build:mappings": "ts-node bin/generate-mapping.ts",
+    "build": "npm run build:mappings && tsc",
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "bugs": {
@@ -44,6 +46,7 @@
   "devDependencies": {
     "@ontologies/core": "^2.0.2",
     "@types/react": "^17.0.1",
+    "ts-node": "^9.1.1",
     "typescript": "^4.1.3"
   }
 }

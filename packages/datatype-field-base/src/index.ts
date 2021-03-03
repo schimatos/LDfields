@@ -6,9 +6,9 @@ import { LDfieldBase } from '@ldfields/field-base';
 export abstract class DatatypeInput<
   Rendered,
   Props extends {
-    termType: string;
-    datatype: string;
-    value: string;
+    termType: string | undefined;
+    datatype: string | undefined;
+    value: string | undefined;
     [key: string]: string | undefined;
   },
   ExtraData = never
@@ -24,7 +24,9 @@ export abstract class DatatypeInput<
    */
   modifies: (keyof Props & string)[] = ['value'];
 
-  supports(props: Props) {
-    return props.termType === 'Literal' && this.supportedDatatypes[props.datatype] === true;
+  supports({ termType, datatype }: Props) {
+    return termType === 'Literal'
+      && datatype !== undefined
+      && this.supportedDatatypes[datatype] === true;
   }
 }

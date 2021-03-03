@@ -1,30 +1,34 @@
 import React from 'react';
 import type { FieldProps } from '@ldfields/field-base/types';
 import { DatatypeInput } from '@ldfields/datatype-field-base';
-// TODO: Use typed on2ts values here
-import xsd from '@ontologies/xsd';
+import supportedDatatypes from './data/supports-mapping.json';
+import datatypeMapping from './data/datatype-mapping.json';
 
-// TODO: Finish up this
 export class GenericDatatypeField<
-  Props extends { [key: string]: string; termType: string; datatype: string; value: string; },
+  Props extends {
+    [key: string]: string | undefined;
+    termType: string | undefined; // 'Literal';
+    datatype: string | undefined; // keyof typeof supportedDatatypes;
+    value: string | undefined;
+  },
   ExtraData = never,
 > extends DatatypeInput<JSX.Element, Props, ExtraData> {
   priority = 50;
 
-  supportedDatatypes = {
-    [xsd.integer.value]: true,
-    [xsd.float.value]: true,
-    [xsd.decimal.value]: true,
-    [xsd.dateTime.value]: true,
-  };
+  supportedDatatypes = supportedDatatypes;
 
   // eslint-disable-next-line class-methods-use-this
-  Field({ props, onChange }: FieldProps<Props, ExtraData>) {
+  Field({ props: { datatype, value }, onChange }: FieldProps<Props, ExtraData>) {
     // TODO [Future]: Bring in min count, min length etc.
+    if (datatype === undefined) {
+      throw new Error('Datatype should be defined for the generic datatype field');
+    }
     return (
       <input
-        type={props.datatype === xsd.dateTime.value ? 'dateTime' : 'number'}
-        value={props.value}
+        // TODO [Future]: Remove type casting here
+        // @ts-ignore
+        type={(datatypeMapping as Record<string, string | undefined>)[datatype]}
+        value={value}
         onChange={(e) => {
           // TODO [Future]: Remove type casting here
           onChange({ value: e.target.value } as Partial<Props>);
