@@ -37,7 +37,8 @@
   },
   "dependencies": {
     "@ldfields/field-base": "^0.0.0",
-    "react": "^17.0.1"
+    "react": "^17.0.1",
+    "typescript": "4.1.5"
   },
   "devDependencies": {
     "@ontologies/core": "^2.0.2",

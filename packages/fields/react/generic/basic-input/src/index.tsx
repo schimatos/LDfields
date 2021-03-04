@@ -3,6 +3,33 @@ import { LDfieldGenericBase } from '@ldfields/generic-field-base';
 import type { FieldProps } from '@ldfields/field-base/types';
 import { useState } from '@jeswr/use-state';
 
+function fieldFactory<
+  Props extends { [key: string]: string | undefined; },
+  ExtraData
+>(modifier: string) {
+  return function Field({ props, onChange }: FieldProps<Props, ExtraData>) {
+    const [value, setValue] = useState<string>(props[modifier] ?? '');
+    useEffect(() => {
+      setValue(props.value ?? '');
+    }, [props.value]);
+    return (
+      <>
+        <label>{modifier ? /[a-z]*$/i.exec(modifier)?.[0] : ''}</label>
+        <input
+          value={value}
+          onChange={(e) => {
+            setValue(e.target.value);
+          }}
+          onBlur={() => {
+            // TODO [Future]: Remove type casting
+            onChange({ [modifier]: value } as Partial<Props>);
+          }}
+        />
+      </>
+    );
+  };
+}
+
 export class BasicInput<
   Props extends { [key: string]: string | undefined; },
   ExtraData = never,
@@ -12,25 +39,5 @@ export class BasicInput<
     return true;
   }
 
-  Field = ({ props, onChange }: FieldProps<Props, ExtraData>) => {
-    const [value, setValue] = useState<string>(props[this.modifier] ?? '');
-    useEffect(() => {
-      setValue(props.value ?? '');
-    }, [props.value]);
-    return (
-      <>
-        <label>{this.modifier ? /[a-z]*$/i.exec(this.modifier)?.[0] : ''}</label>
-        <input
-          value={value}
-          onChange={(e) => {
-            setValue(e.target.value);
-          }}
-          onBlur={() => {
-            // TODO [Future]: Remove type casting
-            onChange({ [this.modifier]: value } as Partial<Props>);
-          }}
-        />
-      </>
-    );
-  };
+  Field = fieldFactory<Props, ExtraData>(this.modifier)
 }

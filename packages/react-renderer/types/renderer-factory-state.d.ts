@@ -1,11 +1,13 @@
-import type { Constraints, FieldProps } from '@ldfields/field-base/types';
+import type { LDfieldBase } from '@ldfields/field-base';
+import type { Constraints } from '@ldfields/field-base/types';
 import type { InitParams } from './init-params';
 
 interface GetComponentOut<
   Props extends { [key: string]: string | undefined; },
   ExtraData = never
 > {
-  Component: (props: FieldProps<Props, ExtraData>) => JSX.Element;
+  Component: LDfieldBase<JSX.Element, Props, ExtraData>[];
+  // JSX.Element;
   modifiable: { [key in keyof Props & string]?: true | undefined; };
   required: (keyof Props & string)[];
   delegationChange: boolean;

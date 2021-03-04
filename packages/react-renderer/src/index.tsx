@@ -1,9 +1,10 @@
 import React, { useEffect, useReducer } from 'react';
-import type { InputDelegator } from '@ldfields/delegator';
+import { ErrorBoundary } from 'react-error-boundary';
 import { InputDelegatorFactory } from '@ldfields/delegator';
 import type { FieldProps } from '@ldfields/field-base/types';
+import type { LDfieldBase } from '@ldfields/field-base';
 import type {
-  RendererFactoryProps, ReducerFunction, RendererActions, RendererState, InitParams,
+  RendererFactoryProps, ReducerFunction, RendererActions, RendererState,
 } from '../types';
 import { initFactory } from './init';
 
@@ -62,23 +63,6 @@ function reducer<
   }
 }
 
-function useRendererReducer<
-  Props extends { [key: string]: string | undefined; },
-  ExtraData = never
->(
-  Delegator: new () => InputDelegator<JSX.Element, Props, ExtraData, Record<string, any>>,
-  ...props: InitParams<Props, ExtraData>
-) {
-  return useReducer<
-        ReducerFunction<Props, ExtraData>,
-        InitParams<Props, ExtraData>
-      >(
-        reducer,
-        props,
-        initFactory<Props, ExtraData>(Delegator),
-      );
-}
-
 export function LDfieldRendererFactory<
   Props extends { [key: string]: string | undefined; },
   ExtraData = never
@@ -90,30 +74,51 @@ export function LDfieldRendererFactory<
   return function Renderer({
     props, constraints, onChange, data,
   }: FieldProps<Props, ExtraData>) {
-    const [{ Component, ...state }, dispatch] = useRendererReducer<Props, ExtraData>(
-      InputDelegator, props, constraints, data,
-    );
+    const [{ Component, ...state }, dispatch] = useReducer<
+    ReducerFunction<Props, ExtraData>
+  >(
+    reducer,
+    initFactory<Props, ExtraData>(InputDelegator)([props, constraints, data]),
+  );
+
+    const stringifiedProps = JSON.stringify(props);
+    const stringifiedConstraints = JSON.stringify(constraints ?? '');
 
     // TODO: add test for error case
     // encountered where this overrides change
     // during render
     useEffect(() => {
       dispatch({ props, constraints, type: 'delegate' });
-    }, [JSON.stringify(props), JSON.stringify(constraints ?? '')]);
+    }, [props, constraints, dispatch, stringifiedProps, stringifiedConstraints]);
 
     return (
       <fieldset onBlur={() => { onChange(state.props); }}>
-        <Component
-          props={{ ...defaultProps, ...state.props }}
-          data={data}
-          onChange={(p: Partial<Props>) => {
-            const update: RendererActions<Props, ExtraData> = {
-              type: 'propUpdate',
-              props: p,
-            };
-            dispatch(update);
-          }}
-        />
+      {
+        Component.map((Field: LDfieldBase<JSX.Element, Props, ExtraData>, i: number) => (
+          <ErrorBoundary
+            FallbackComponent={() => (
+              <>
+              {
+                Field.fieldTargets.map((target) => (
+                  <input
+                    key={i}
+                    aria-label={target}
+                    value={state.props[target]}
+                    onChange={(p) => onChange({ ...state.props, [target]: p.target.value })}
+                  />
+                ))
+              }
+              </>
+            )}
+          >
+          <Field.Field
+            {...state}
+            key={i}
+            onChange={(p) => onChange({ ...state.props, ...p })}
+          />
+          </ErrorBoundary>
+        ))
+      }
       </fieldset>
     );
   };

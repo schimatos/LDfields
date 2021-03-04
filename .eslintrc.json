@@ -5,7 +5,8 @@
       "node": true
   },
   "extends": [
-      "airbnb-base"
+      "airbnb-base",
+      "plugin:react-hooks/recommended"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
@@ -32,7 +33,7 @@
       "max-len": ["error", {"code": 100}],
       "@typescript-eslint/consistent-type-imports": "error",
       "class-methods-use-this": "off",
-      "extra-rules/no-commented-out-code": "warn",
+    //   "extra-rules/no-commented-out-code": "warn",
       "@typescript-eslint/no-unused-vars": ["error"]
   }
 }

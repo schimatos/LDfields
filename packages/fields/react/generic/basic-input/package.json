@@ -39,10 +39,12 @@
   "dependencies": {
     "@jeswr/use-state": "^1.0.1",
     "@ldfields/generic-field-base": "^0.0.0",
-    "react": "^17.0.1"
+    "react": "^17.0.1",
+    "typescript": "4.1.5"
   },
   "devDependencies": {
     "@ldfields/field-base": "^0.0.0",
-    "@types/react": "^17.0.2"
+    "@types/react": "17.0.1",
+    "typescript": "4.1.5"
   }
 }

@@ -40,7 +40,8 @@
     "@ldfields/datatype-field-base": "^0.0.0",
     "@ldfields/field-base": "^0.0.0",
     "@ontologies/xsd": "^1.0.0",
-    "react": "^17.0.1"
+    "react": "^17.0.1",
+    "typescript": "4.1.5"
   },
   "devDependencies": {
     "@babel/plugin-syntax-jsx": "^7.12.13",
