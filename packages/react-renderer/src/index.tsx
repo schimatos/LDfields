@@ -74,12 +74,21 @@ export function LDfieldRendererFactory<
   return function Renderer({
     props, constraints, onChange, data,
   }: FieldProps<Props, ExtraData>) {
-    const [{ Component, ...state }, dispatch] = useReducer<
-    ReducerFunction<Props, ExtraData>
-  >(
-    reducer,
-    initFactory<Props, ExtraData>(InputDelegator)([props, constraints, data]),
-  );
+    // @ts-ignore
+    // const [{ Component, ...state }, dispatch] = useReducer((x) => x, {
+    const state = {
+      Component: [],
+      props,
+      constraints,
+    };
+    // );
+
+    //   useReducer<
+    //   ReducerFunction<Props, ExtraData>
+    // >(
+    //   reducer,
+    //   initFactory<Props, ExtraData>(InputDelegator)([props, constraints, data]),
+    // );
 
     const stringifiedProps = JSON.stringify(props);
     const stringifiedConstraints = JSON.stringify(constraints ?? '');
@@ -88,13 +97,16 @@ export function LDfieldRendererFactory<
     // encountered where this overrides change
     // during render
     useEffect(() => {
-      dispatch({ props, constraints, type: 'delegate' });
-    }, [props, constraints, dispatch, stringifiedProps, stringifiedConstraints]);
+      // @ts-ignore
+      // dispatch({ props, constraints, type: 'delegate' });
+    }, [props, constraints, stringifiedProps, stringifiedConstraints]);
 
     return (
-      <fieldset onBlur={() => { onChange(state.props); }}>
+      <fieldset onBlur={
+        () => { onChange(state.props); }
+      }>
       {
-        Component.map((Field: LDfieldBase<JSX.Element, Props, ExtraData>, i: number) => (
+        [].map((Field: LDfieldBase<JSX.Element, Props, ExtraData>, i: number) => (
           <ErrorBoundary
             FallbackComponent={() => (
               <>

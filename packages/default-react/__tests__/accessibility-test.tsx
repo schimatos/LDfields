@@ -105,7 +105,6 @@ it('Something witout hooks', async () => {
   expect(results).toHaveNoViolations();
 });
 
-
 // This is here to test issues related to multiple
 // instances of react being introduced by multiple
 // packages and the test suite
@@ -116,4 +115,3 @@ it('Something with hooks', async () => {
   const results = await axe(container);
   expect(results).toHaveNoViolations();
 });
-
