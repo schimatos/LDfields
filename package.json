@@ -10,6 +10,12 @@
   "files": [
     "lib"
   ],
+  "private": true,
+  "workspaces": [
+    "packages/*",
+    "packages/fields/react/generic/*",
+    "packages/fields/react/standard/*"
+  ],
   "scripts": {
     "test:coverage": "npm test -- --coverage",
     "test:badges": "npm run test:coverage  && jest-coverage-badges",
