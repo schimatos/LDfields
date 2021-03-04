@@ -32,7 +32,7 @@
   "scripts": {
     "tsc": "tsc",
     "build": "tsc",
-    "test": "echo \"Error: run tests from root\" && exit 1"
+    "test": "jest"
   },
   "bugs": {
     "url": "https://github.com/schimatos/LDfields/issues"
@@ -51,12 +51,35 @@
     "@testing-library/react": "^11.2.5",
     "@types/jest-axe": "^3.5.1",
     "@types/react": "17.0.1",
+    "jest": "^26.6.3",
     "jest-axe": "^4.1.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "ts-jest": "^26.5.3",
     "typescript": "^4.1.3"
   },
   "peerDependencies": {
     "react": "^17.0.1"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "collectCoverage": true,
+    "coverageReporters": [
+      "json-summary",
+      "text",
+      "lcov"
+    ],
+    "collectCoverageFrom": [
+      "**/[^\\.]+.{ts,tsx}"
+    ],
+    "testRegex": "[^.]*/__tests__/[^.]*-test\\.tsx?",
+    "coverageThreshold": {
+      "global": {
+        "branches": 50,
+        "functions": 50,
+        "lines": 50,
+        "statements": 50
+      }
+    }
   }
 }

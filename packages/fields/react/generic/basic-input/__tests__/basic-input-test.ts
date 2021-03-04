@@ -1,5 +1,7 @@
 const basicInput = require('..');
 
 describe('basic-input', () => {
-  it('needs tests');
+  it('needs tests', () => {
+    expect(true).toBe(true);
+  });
 });

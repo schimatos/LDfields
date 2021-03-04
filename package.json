@@ -1,5 +1,5 @@
 {
-  "name": "ldfields",
+  "name": "root",
   "version": "0.0.0-development",
   "description": "",
   "main": "dist/index.js",
@@ -16,10 +16,11 @@
     "packages/fields/react/generic/*",
     "packages/fields/react/standard/*"
   ],
+  "useWorkspaces": true,
   "scripts": {
     "test:coverage": "npm test -- --coverage",
     "test:badges": "npm run test:coverage  && jest-coverage-badges",
-    "test": "jest",
+    "test": "lerna run test",
     "lint": "eslint **/**.ts **/**.tsx",
     "lint:fix": "eslint **/**.ts **/**.tsx --fix",
     "build": "lerna bootstrap && lerna run build",
