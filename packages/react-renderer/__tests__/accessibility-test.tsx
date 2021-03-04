@@ -10,6 +10,20 @@ const EmptyRenderer = LDfieldRendererFactory({
   defaultProps: {},
 });
 
+const SingleOptionalFieldRenderer = LDfieldRendererFactory<{ value: string }>({
+  settings: [{
+    fieldFor: 'value',
+    condition: {
+      allowed: false, required: false,
+    },
+  }],
+  fields: [],
+  genericFields: [],
+  defaultProps: {
+    value: '',
+  },
+});
+
 const SingleFieldRenderer = LDfieldRendererFactory<{ value: string }>({
   settings: [{
     fieldFor: 'value',
@@ -17,7 +31,17 @@ const SingleFieldRenderer = LDfieldRendererFactory<{ value: string }>({
       allowed: true, required: true,
     },
   }],
-  fields: [],
+  fields: [{
+    priority: 0,
+    modifies: ['value'],
+    fieldTargets: ['value'],
+    supports() {
+      return true;
+    },
+    Field() {
+      return <input aria-label="foo" />;
+    },
+  }],
   genericFields: [],
   defaultProps: {
     value: '',
@@ -39,12 +63,38 @@ describe('Testing the accessibility of fields', () => {
     expect(results).toHaveNoViolations();
   });
 
-  it('Should have no violations on the default render for single field props', async () => {
+  it('Should have no violations on the default render for optional single field', async () => {
+    const { container } = render(
+      <SingleOptionalFieldRenderer
+        onChange={() => {}}
+        constraints={{}}
+        props={{}}
+      />,
+    );
+    const results = await axe(container);
+    expect(results).toHaveNoViolations();
+  });
+
+  it('Should have no violations on the default render for single field', async () => {
     const { container } = render(
       <SingleFieldRenderer
         onChange={() => {}}
         constraints={{}}
         props={{}}
+      />,
+    );
+    const results = await axe(container);
+    expect(results).toHaveNoViolations();
+  });
+
+  it('Should have no violations on the default render for single field with props', async () => {
+    const { container } = render(
+      <SingleFieldRenderer
+        onChange={() => {}}
+        constraints={{}}
+        props={{
+          value: 'hello',
+        }}
       />,
     );
     const results = await axe(container);
