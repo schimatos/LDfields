@@ -5,7 +5,8 @@
       "node": true
   },
   "extends": [
-      "airbnb-base"
+      "airbnb-base",
+      "plugin:react-hooks/recommended"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
