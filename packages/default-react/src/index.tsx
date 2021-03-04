@@ -1,5 +1,4 @@
 import React from 'react';
-import type { ActorInitSparql } from '@comunica/actor-init-sparql';
 import { defaultSettings as settings } from '@ldfields/default-settings';
 import { rdf, rdfs } from '@ldfields/default-settings/lib/enums';
 import type { Props } from '@ldfields/default-settings/types';
@@ -20,7 +19,7 @@ const defaultProps: Props = {
 };
 
 export interface ExtraData {
-  queryEngine?: ActorInitSparql;
+  queryEngine?: any; // ActorInitSparql;
   pathFactory?: any;
 }
 

@@ -37,12 +37,15 @@
     "url": "https://github.com/schimatos/LDfields/issues"
   },
   "dependencies": {
-    "@jeswr/use-state": "^1.0.1",
-    "@ldfields/generic-field-base": "^0.0.0",
-    "react": "^17.0.1"
+    "@jeswr/use-state": "^1.0.3",
+    "@ldfields/generic-field-base": "^0.0.0"
   },
   "devDependencies": {
     "@ldfields/field-base": "^0.0.0",
-    "@types/react": "^17.0.2"
+    "@types/react": "^17.0.2",
+    "react": "^17.0.1"
+  },
+  "peerDependencies": {
+    "react": "^17.0.1"
   }
 }

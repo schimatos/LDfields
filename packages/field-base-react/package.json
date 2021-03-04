@@ -39,14 +39,17 @@
   "dependencies": {
     "@ldfields/datatype-field-base": "^0.0.0",
     "@ldfields/field-base": "^0.0.0",
-    "@ontologies/xsd": "^1.0.0",
-    "react": "^17.0.1"
+    "@ontologies/xsd": "^1.0.0"
   },
   "devDependencies": {
     "@babel/plugin-syntax-jsx": "^7.12.13",
     "@babel/preset-react": "^7.12.13",
     "@ontologies/core": "^2.0.2",
     "@types/react": "^17.0.1",
-    "typescript": "^4.1.3"
+    "typescript": "^4.1.5",
+    "react": "^17.0.1"
+  },
+  "peerDependencies": {
+    "react": "^17.0.1"
   }
 }
