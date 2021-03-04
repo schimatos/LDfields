@@ -1,4 +1,4 @@
-const genericFieldBase = require('../lib');
+// const genericFieldBase = require('../lib');
 
 describe('@ldfields/generic-field-base', () => {
   it('needs tests', () => {

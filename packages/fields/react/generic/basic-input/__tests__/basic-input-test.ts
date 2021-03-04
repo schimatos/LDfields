@@ -1,4 +1,4 @@
-const basicInput = require('..');
+// const basicInput = require('..');
 
 describe('basic-input', () => {
   it('needs tests', () => {

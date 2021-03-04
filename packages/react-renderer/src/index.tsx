@@ -1,4 +1,4 @@
-import React, { useState, useReducer } from 'react';
+import React, { useEffect, useReducer } from 'react';
 import type { InputDelegator } from '@ldfields/delegator';
 import { InputDelegatorFactory } from '@ldfields/delegator';
 import type { FieldProps } from '@ldfields/field-base/types';
@@ -79,11 +79,6 @@ function useRendererReducer<
       );
 }
 
-function Component(x: any) {
-  const [s, d] = useState('');
-  return <>{s}</>
-}
-
 export function LDfieldRendererFactory<
   Props extends { [key: string]: string | undefined; },
   ExtraData = never
@@ -95,24 +90,16 @@ export function LDfieldRendererFactory<
   return function Renderer({
     props, constraints, onChange, data,
   }: FieldProps<Props, ExtraData>) {
-    // const [{ Component, ...state }, dispatch] = useRendererReducer<Props, ExtraData>(
-    //   InputDelegator, props, constraints, data,
-    // );
-
-    function dispatch(x: any) {
-      return x;
-    }
-
-    const state = {
-      props, constraints, data,
-    };
+    const [{ Component, ...state }, dispatch] = useRendererReducer<Props, ExtraData>(
+      InputDelegator, props, constraints, data,
+    );
 
     // TODO: add test for error case
     // encountered where this overrides change
     // during render
-    // useEffect(() => {
-    //   dispatch({ props, constraints, type: 'delegate' });
-    // }, [JSON.stringify(props), JSON.stringify(constraints ?? '')]);
+    useEffect(() => {
+      dispatch({ props, constraints, type: 'delegate' });
+    }, [JSON.stringify(props), JSON.stringify(constraints ?? '')]);
 
     return (
       <fieldset onBlur={() => { onChange(state.props); }}>
