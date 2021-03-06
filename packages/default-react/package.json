@@ -1,6 +1,6 @@
 {
   "name": "@ldfields/default-react",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Default configuration for ldfields in React",
   "keywords": [
     "React",
@@ -39,14 +39,14 @@
     "url": "https://github.com/schimatos/LDfields/issues"
   },
   "dependencies": {
-    "@ldfields/default-settings": "^0.0.2",
-    "@ldfields/props-rdf-conversion": "^0.0.2",
-    "@ldfields/react-datatype-field": "^0.0.2",
-    "@ldfields/react-generic-basic-input": "^0.0.2",
-    "@ldfields/react-renderer": "^0.0.2"
+    "@ldfields/default-settings": "^0.0.3",
+    "@ldfields/props-rdf-conversion": "^0.0.3",
+    "@ldfields/react-datatype-field": "^0.0.3",
+    "@ldfields/react-generic-basic-input": "^0.0.3",
+    "@ldfields/react-renderer": "^0.0.3"
   },
   "devDependencies": {
-    "@ldfields/field-base": "^0.0.2",
+    "@ldfields/field-base": "^0.0.3",
     "@rdfjs/data-model": "^1.2.0",
     "@testing-library/dom": "^7.29.6",
     "@testing-library/react": "^11.2.5",

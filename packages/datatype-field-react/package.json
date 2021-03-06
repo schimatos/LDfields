@@ -1,6 +1,6 @@
 {
   "name": "@ldfields/react-datatype-field",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Basic LDfield class for datatype inputs in react",
   "keywords": [
     "LDfield",
@@ -39,8 +39,8 @@
     "url": "https://github.com/schimatos/LDfields/issues"
   },
   "dependencies": {
-    "@ldfields/datatype-field-base": "^0.0.2",
-    "@ldfields/field-base": "^0.0.2",
+    "@ldfields/datatype-field-base": "^0.0.3",
+    "@ldfields/field-base": "^0.0.3",
     "@ontologies/xsd": "^1.0.0"
   },
   "devDependencies": {
