@@ -1,4 +1,3 @@
-# template-typescript
-Template repo for my Typescript projects
+# LDfields
 
-This package uses Yarn workspaces to separate react dependencies.
+Modular form field customisation, created for use with linked-data libraries.
