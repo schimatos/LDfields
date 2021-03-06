@@ -23,10 +23,8 @@
     "test": "jest",
     "lint": "eslint **/**.ts **/**.tsx",
     "lint:fix": "eslint **/**.ts **/**.tsx --fix",
-    "build": "lerna bootstrap && lerna run build",
-    "prepare": "yarn run build",
+    "build": "lerna bootstrap",
     "semantic-release": "semantic-release",
-    "postinstall": "yarn run build",
     "typedoc": "typedoc"
   },
   "repository": {

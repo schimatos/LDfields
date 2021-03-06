@@ -31,6 +31,7 @@
   "scripts": {
     "tsc": "tsc",
     "build": "tsc",
+    "postinstall": "tsc",
     "test": "jest"
   },
   "bugs": {
@@ -71,5 +72,8 @@
         "statements": 0
       }
     }
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

@@ -25,7 +25,7 @@
     "lib"
   ],
   "publishConfig": {
-    "access": "public"
+    "access": "restricted"
   },
   "repository": {
     "type": "git",
@@ -34,15 +34,11 @@
   "scripts": {
     "tsc": "tsc",
     "build": "tsc",
+    "postinstall": "tsc",
     "test": "jest"
   },
   "bugs": {
     "url": "https://github.com/schimatos/LDfields/issues"
-  },
-  "devDependencies": {
-    "jest": "^26.6.3",
-    "ts-jest": "^26.5.3",
-    "typescript": "^4.2.2"
   },
   "devDependencies": {
     "@ontologies/core": "^2.0.2",

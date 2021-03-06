@@ -11,10 +11,10 @@ jobs:
 
       - uses: actions/setup-node@v2
         with:
-          node-version: 14.x
+          node-version: 15.x
 
       - name: npm install, build, and lint
         run: |
           yarn install
-          yarn run build --if-present
+          yarn run build
           npm run-script lint

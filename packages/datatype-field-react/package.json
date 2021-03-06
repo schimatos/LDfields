@@ -30,8 +30,9 @@
   },
   "scripts": {
     "tsc": "tsc",
-    "build:mappings": "ts-node bin/generate-mapping.ts",
+    "build:mappings": "npx ts-node bin/generate-mapping.ts",
     "build": "npm run build:mappings && tsc",
+    "postinstall": "npm run build",
     "test": "jest"
   },
   "bugs": {
@@ -74,5 +75,8 @@
         "statements": 0
       }
     }
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
