@@ -1,6 +1,6 @@
 {
   "name": "@ldfields/settings-utils",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Set of utilities to build a settings configuration for LDfields",
   "keywords": [
     "input",
@@ -38,7 +38,7 @@
     "url": "https://github.com/schimatos/LDfields/issues"
   },
   "devDependencies": {
-    "@ldfields/delegator": "^0.0.3",
+    "@ldfields/delegator": "^0.0.4",
     "@ontologies/core": "^2.0.2",
     "jest": "^26.6.3",
     "ts-jest": "^26.5.3",
