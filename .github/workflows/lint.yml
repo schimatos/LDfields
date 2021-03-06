@@ -16,5 +16,5 @@ jobs:
       - name: npm install, build, and lint
         run: |
           yarn install
-          yarn run build --if-present
+          yarn run build
           npm run-script lint
