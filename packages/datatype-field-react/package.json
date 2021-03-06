@@ -30,7 +30,7 @@
   },
   "scripts": {
     "tsc": "tsc",
-    "build:mappings": "ts-node bin/generate-mapping.ts",
+    "build:mappings": "npx ts-node bin/generate-mapping.ts",
     "build": "npm run build:mappings && tsc",
     "test": "jest"
   },
