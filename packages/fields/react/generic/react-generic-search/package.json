@@ -1,6 +1,6 @@
 {
   "name": "@ldfields/react-generic-search",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Input field for searching data, for use with LDfields in react",
   "keywords": [
     "LDfields",
