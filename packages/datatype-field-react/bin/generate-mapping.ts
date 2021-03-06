@@ -7,7 +7,7 @@ const basePath = path.join(__dirname, '..', 'src', 'data');
 
 // Clean up existing file if present
 try {
-  fs.rmSync(basePath, { recursive: true });
+  fs.rmdirSync(basePath, { recursive: true });
 // eslint-disable-next-line no-empty
 } catch (e) {}
 
