@@ -16,7 +16,7 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: '15'
-      - run: npm ci
+      - run: yarn install && yarn run build
       - run: npm test
 
       - name: Configure CI Git User
@@ -31,7 +31,7 @@ jobs:
         run: git checkout "${GITHUB_REF:11}" && git pull
 
       - name: Install Packages
-        run: yarn install
+        run: yarn install && yarn run build
 
       - name: Authenticate with Registry
         run: |
