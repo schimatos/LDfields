@@ -24,6 +24,7 @@
     "lint": "eslint **/**.ts **/**.tsx",
     "lint:fix": "eslint **/**.ts **/**.tsx --fix",
     "build": "lerna bootstrap",
+    "postinstall": "lerna bootstrap",
     "semantic-release": "semantic-release",
     "typedoc": "typedoc"
   },
