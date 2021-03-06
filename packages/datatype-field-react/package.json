@@ -30,9 +30,9 @@
   },
   "scripts": {
     "tsc": "tsc",
-    "build:mappings": "npx ts-node bin/generate-mapping.ts",
-    "build": "npm run build:mappings && tsc",
-    "prepublishOnly": "npm run build",
+    "build:mappings": "yarn ts-node bin/generate-mapping.ts",
+    "build": "yarn run build:mappings && tsc",
+    "prepublishOnly": "yarn run build",
     "test": "jest"
   },
   "bugs": {
