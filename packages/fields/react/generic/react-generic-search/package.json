@@ -34,7 +34,7 @@
   "scripts": {
     "tsc": "tsc",
     "build": "tsc",
-    "postinstall": "tsc",
+    "prepublishOnly": "tsc",
     "test": "jest"
   },
   "bugs": {
