@@ -30,6 +30,7 @@
   "scripts": {
     "tsc": "tsc",
     "build": "tsc",
+    "postinstall": "tsc",
     "test": "jest"
   },
   "bugs": {
