@@ -78,5 +78,8 @@
         "statements": 0
       }
     }
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

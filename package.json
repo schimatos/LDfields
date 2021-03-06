@@ -24,7 +24,6 @@
     "lint": "eslint **/**.ts **/**.tsx",
     "lint:fix": "eslint **/**.ts **/**.tsx --fix",
     "build": "lerna bootstrap && lerna run build",
-    "prepare": "yarn run build",
     "semantic-release": "semantic-release",
     "postinstall": "yarn run build",
     "typedoc": "typedoc"
