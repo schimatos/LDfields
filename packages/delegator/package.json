@@ -1,6 +1,6 @@
 {
   "name": "@ldfields/delegator",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Delegates the fields to be displayed",
   "keywords": [
     "LDfields",
@@ -39,12 +39,12 @@
     "url": "https://github.com/schimatos/LDfields/issues"
   },
   "dependencies": {
-    "@ldfields/datatype-field-base": "^0.0.5",
-    "@ldfields/field-base": "^0.0.5",
+    "@ldfields/datatype-field-base": "^0.0.6",
+    "@ldfields/field-base": "^0.0.6",
     "@ontologies/xsd": "^1.0.0"
   },
   "devDependencies": {
-    "@ldfields/react-generic-basic-input": "^0.0.5",
+    "@ldfields/react-generic-basic-input": "^0.0.6",
     "@ontologies/core": "^2.0.2",
     "jest": "^26.6.3",
     "ts-jest": "^26.5.3",

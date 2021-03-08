@@ -1,6 +1,6 @@
 {
   "name": "@ldfields/default-settings",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Default settings for use with LDfields",
   "keywords": [
     "LDfields",
@@ -38,10 +38,10 @@
     "url": "https://github.com/schimatos/LDfields/issues"
   },
   "dependencies": {
-    "@ldfields/settings-utils": "^0.0.5"
+    "@ldfields/settings-utils": "^0.0.6"
   },
   "devDependencies": {
-    "@ldfields/delegator": "^0.0.5",
+    "@ldfields/delegator": "^0.0.6",
     "jest": "^26.6.3",
     "ts-jest": "^26.5.3",
     "typescript": "^4.2.2"

@@ -1,6 +1,6 @@
 {
   "name": "@ldfields/field-base-react",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Base field class for React LDfields",
   "keywords": [
     "LDfields",
@@ -38,8 +38,8 @@
     "url": "https://github.com/schimatos/LDfields/issues"
   },
   "dependencies": {
-    "@ldfields/datatype-field-base": "^0.0.5",
-    "@ldfields/field-base": "^0.0.5",
+    "@ldfields/datatype-field-base": "^0.0.6",
+    "@ldfields/field-base": "^0.0.6",
     "@ontologies/xsd": "^1.0.0"
   },
   "devDependencies": {
