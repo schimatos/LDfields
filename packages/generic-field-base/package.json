@@ -1,6 +1,6 @@
 {
   "name": "@ldfields/generic-field-base",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Base field for *Generic* LDfield components",
   "keywords": [
     "LDfields",
@@ -40,7 +40,7 @@
     "url": "https://github.com/schimatos/LDfields/issues"
   },
   "dependencies": {
-    "@ldfields/field-base": "^0.0.6"
+    "@ldfields/field-base": "^0.0.7"
   },
   "devDependencies": {
     "@ontologies/core": "^2.0.2",

@@ -4,7 +4,7 @@
     "packages/fields/react/generic/*",
     "packages/fields/react/standard/*"
   ],
-  "version": "0.0.6",
+  "version": "0.0.7",
   "npmClient": "yarn",
   "useWorkspaces": true
 }
