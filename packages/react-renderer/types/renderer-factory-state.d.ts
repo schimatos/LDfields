@@ -1,4 +1,4 @@
-import { LDfieldBase } from '@ldfields/field-base';
+import type { LDfieldBase } from '@ldfields/field-base';
 import type { Constraints, FieldProps } from '@ldfields/field-base/types';
 import type { InitParams } from './init-params';
 

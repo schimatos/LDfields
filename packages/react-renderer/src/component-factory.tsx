@@ -16,7 +16,12 @@ export function ComponentFactory<
     <>
       {
         components.map((Field: LDfieldBase<JSX.Element, Props, ExtraData>, i: number) => (
-            <Field.Field {...props} label={props.label + '-' + Field.fieldTargets.join('')} key={i} onChange={(p) => onChange({ ...props.props, ...p })} />
+            <Field.Field
+              {...props}
+              label={`${props.label}-${Field.fieldTargets.join('')}`}
+              key={i}
+              onChange={(p) => onChange({ ...props.props, ...p })}
+            />
         ))
       }
     </>

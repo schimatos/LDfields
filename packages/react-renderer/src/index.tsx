@@ -88,7 +88,7 @@ export function LDfieldRendererFactory<
   const InputDelegator = InputDelegatorFactory(settings, fields, genericFields);
 
   return function Renderer({
-    props, constraints, onChange, data, label
+    props, constraints, onChange, data, label,
   }: FieldProps<Props, ExtraData>) {
     const [{ Component, ...state }, dispatch] = useRendererReducer<Props, ExtraData>(
       InputDelegator, props, constraints, data,
