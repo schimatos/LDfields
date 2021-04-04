@@ -18,7 +18,7 @@ export class GenericDatatypeField<
   supportedDatatypes = supportedDatatypes;
 
   // eslint-disable-next-line class-methods-use-this
-  Field({ props: { datatype, value }, onChange }: FieldProps<Props, ExtraData>) {
+  Field({ props: { datatype, value }, onChange, label }: FieldProps<Props, ExtraData>) {
     // TODO [Future]: Bring in min count, min length etc.
     if (datatype === undefined) {
       throw new Error('Datatype should be defined for the generic datatype field');
@@ -28,6 +28,7 @@ export class GenericDatatypeField<
         // TODO [Future]: Remove type casting here
         // @ts-ignore
         type={(datatypeMapping as Record<string, string | undefined>)[datatype]}
+        aria-label={label}
         value={value}
         onChange={(e) => {
           // TODO [Future]: Remove type casting here

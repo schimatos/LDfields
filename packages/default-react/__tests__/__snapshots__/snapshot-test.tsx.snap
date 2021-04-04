@@ -1,0 +1,177 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing the snapshot changes of fields Should have no violations on the default render for empty props 1`] = `
+<fieldset
+  onBlur={[Function]}
+>
+  <label>
+    undefined-value
+  </label>
+  <input
+    aria-label="undefined-value"
+    onBlur={[Function]}
+    onChange={[Function]}
+    value=""
+  />
+  <label>
+    undefined-termType
+  </label>
+  <input
+    aria-label="undefined-termType"
+    onBlur={[Function]}
+    onChange={[Function]}
+    value="Literal"
+  />
+</fieldset>
+`;
+
+exports[`Testing the snapshot changes of fields Should have no violations on the default render for integer literal 1`] = `
+<fieldset
+  onBlur={[Function]}
+>
+  <label>
+    undefined-value
+  </label>
+  <input
+    aria-label="undefined-value"
+    onBlur={[Function]}
+    onChange={[Function]}
+    value="0"
+  />
+  <label>
+    undefined-termType
+  </label>
+  <input
+    aria-label="undefined-termType"
+    onBlur={[Function]}
+    onChange={[Function]}
+    value="Literal"
+  />
+  <label>
+    undefined-datatype
+  </label>
+  <input
+    aria-label="undefined-datatype"
+    onBlur={[Function]}
+    onChange={[Function]}
+    value="http://www.w3.org/2001/XMLSchema#integer"
+  />
+</fieldset>
+`;
+
+exports[`Testing the snapshot changes of fields Should have no violations on the default render for literal 1`] = `
+<fieldset
+  onBlur={[Function]}
+>
+  <input
+    aria-label="undefined-value"
+    onChange={[Function]}
+    type="text"
+    value="Jesse"
+  />
+  <label>
+    undefined-termType
+  </label>
+  <input
+    aria-label="undefined-termType"
+    onBlur={[Function]}
+    onChange={[Function]}
+    value="Jesse"
+  />
+  <label>
+    undefined-datatype
+  </label>
+  <input
+    aria-label="undefined-datatype"
+    onBlur={[Function]}
+    onChange={[Function]}
+    value="Jesse"
+  />
+</fieldset>
+`;
+
+exports[`Testing the snapshot changes of fields Should have no violations on the default render for namedNode props + label 1`] = `
+<fieldset
+  onBlur={[Function]}
+>
+  <label>
+    undefined-value
+  </label>
+  <input
+    aria-label="undefined-value"
+    onBlur={[Function]}
+    onChange={[Function]}
+    value="http://example.org#Jesse"
+  />
+  <label>
+    undefined-termType
+  </label>
+  <input
+    aria-label="undefined-termType"
+    onBlur={[Function]}
+    onChange={[Function]}
+    value="NamedNode"
+  />
+  <label>
+    undefined-http://www.w3.org/1999/02/22-rdf-syntax-ns#type
+  </label>
+  <input
+    aria-label="undefined-http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+    onBlur={[Function]}
+    onChange={[Function]}
+    value=""
+  />
+  <label>
+    undefined-http://www.w3.org/1999/02/22-rdf-syntax-ns#label
+  </label>
+  <input
+    aria-label="undefined-http://www.w3.org/1999/02/22-rdf-syntax-ns#label"
+    onBlur={[Function]}
+    onChange={[Function]}
+    value=""
+  />
+</fieldset>
+`;
+
+exports[`Testing the snapshot changes of fields Should have no violations on the default render for namedNode props 1`] = `
+<fieldset
+  onBlur={[Function]}
+>
+  <label>
+    undefined-value
+  </label>
+  <input
+    aria-label="undefined-value"
+    onBlur={[Function]}
+    onChange={[Function]}
+    value="http://example.org#Jesse"
+  />
+  <label>
+    undefined-termType
+  </label>
+  <input
+    aria-label="undefined-termType"
+    onBlur={[Function]}
+    onChange={[Function]}
+    value="http://example.org#Jesse"
+  />
+  <label>
+    undefined-http://www.w3.org/1999/02/22-rdf-syntax-ns#type
+  </label>
+  <input
+    aria-label="undefined-http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+    onBlur={[Function]}
+    onChange={[Function]}
+    value="http://example.org#Jesse"
+  />
+  <label>
+    undefined-http://www.w3.org/1999/02/22-rdf-syntax-ns#label
+  </label>
+  <input
+    aria-label="undefined-http://www.w3.org/1999/02/22-rdf-syntax-ns#label"
+    onBlur={[Function]}
+    onChange={[Function]}
+    value="http://example.org#Jesse"
+  />
+</fieldset>
+`;

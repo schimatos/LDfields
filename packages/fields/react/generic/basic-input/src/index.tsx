@@ -7,16 +7,17 @@ function fieldFactory<
   Props extends { [key: string]: string | undefined; },
   ExtraData
 >(modifier: string) {
-  return function Field({ props, onChange }: FieldProps<Props, ExtraData>) {
+  return function Field({ props, onChange, label }: FieldProps<Props, ExtraData>) {
     const [value, setValue] = useState<string>(props[modifier] ?? '');
     useEffect(() => {
       setValue(props.value ?? '');
     }, [props.value]);
     return (
       <>
-        <label>{modifier ? /[a-z]*$/i.exec(modifier)?.[0] : ''}</label>
+        <label>{label ?? (modifier ? /[a-z]*$/i.exec(modifier)?.[0] : '')}</label>
         <input
           value={value}
+          aria-label={label}
           onChange={(e) => {
             setValue(e.target.value);
           }}

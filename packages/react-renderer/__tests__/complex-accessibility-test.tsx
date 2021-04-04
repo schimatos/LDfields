@@ -2,6 +2,7 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import { axe, toHaveNoViolations } from 'jest-axe';
 import { defaultSettings } from '@ldfields/default-settings';
+import renderer from 'react-test-renderer';
 import { LDfieldRendererFactory } from '../src';
 
 const DefaultSettingRenderer = LDfieldRendererFactory<{ [key: string]: string }>({
@@ -64,5 +65,31 @@ describe('Testing the accessibility of fields', () => {
     );
     const results = await axe(container);
     expect(results).toHaveNoViolations();
+  });
+});
+
+describe('Testing the complex field contains an input fields', () => {
+  it('Should have no violations on the default render for empty props', async () => {
+    const { container } = render(
+      <DefaultSettingRenderer
+        onChange={() => {}}
+        constraints={{}}
+        props={{}}
+      />,
+    );
+    expect(container.innerHTML.toString()).toContain('input');
+  });
+});
+
+describe('Testing the complex field does not change', () => {
+  it('Should have no violations on the default render for empty props', async () => {
+    const tree = renderer.create(
+      <DefaultSettingRenderer
+        onChange={() => {}}
+        constraints={{}}
+        props={{}}
+      />,
+    ).toJSON();
+    expect(tree).toMatchSnapshot();
   });
 });

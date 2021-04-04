@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing the complex field does not change Should have no violations on the default render for empty props 1`] = `
+<fieldset
+  onBlur={[Function]}
+>
+  <input
+    aria-label="value"
+  />
+  <input
+    aria-label="termType"
+  />
+</fieldset>
+`;

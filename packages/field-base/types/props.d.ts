@@ -33,4 +33,8 @@ export interface FieldProps<
    * e.g. a queryEngine to search for results
    */
   data?: ExtraData;
+  /**
+   * The aria-label for the field
+   */
+  label?: string;
 }

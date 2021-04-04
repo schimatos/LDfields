@@ -34,13 +34,15 @@ export class ReactInputDelegator<
         delegation,
         delegationChange,
       } = this.delegator(...props);
+      if (delegationChange) {
+        this.Component = ComponentFactory(delegation);
+      }
       return {
         modifiable,
         required,
         delegationChange,
-        Component: delegationChange
-          ? ComponentFactory(delegation)
-          : this.Component,
+        delegation,
+        Component: this.Component,
       };
     };
   }

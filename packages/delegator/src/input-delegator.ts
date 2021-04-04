@@ -90,7 +90,7 @@ export class InputDelegator<
     if (
       // Testing for change from previous delegation
       this.lastDelegation.length !== delegation.length
-      || !this.lastDelegation.every((elem, i) => elem === delegation[i])
+      || this.lastDelegation.some((elem, i) => elem !== delegation[i])
     ) {
       delegationChange = true;
       this.lastDelegation = delegation;

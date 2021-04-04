@@ -88,7 +88,7 @@ export function LDfieldRendererFactory<
   const InputDelegator = InputDelegatorFactory(settings, fields, genericFields);
 
   return function Renderer({
-    props, constraints, onChange, data,
+    props, constraints, onChange, data, label
   }: FieldProps<Props, ExtraData>) {
     const [{ Component, ...state }, dispatch] = useRendererReducer<Props, ExtraData>(
       InputDelegator, props, constraints, data,
@@ -101,10 +101,12 @@ export function LDfieldRendererFactory<
       dispatch({ props, constraints, type: 'delegate' });
     }, [JSON.stringify(props), JSON.stringify(constraints ?? '')]);
 
+    const calculatedProps = { ...defaultProps, ...state.props };
+
     return (
       <fieldset onBlur={() => { onChange(state.props); }}>
         <Component
-          props={{ ...defaultProps, ...state.props }}
+          props={calculatedProps}
           data={data}
           onChange={(p: Partial<Props>) => {
             const update: RendererActions<Props, ExtraData> = {
@@ -113,6 +115,7 @@ export function LDfieldRendererFactory<
             };
             dispatch(update);
           }}
+          label={label}
         />
       </fieldset>
     );

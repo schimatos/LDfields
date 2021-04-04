@@ -70,7 +70,7 @@
     "collectCoverageFrom": [
       "**/[^\\.]+.{ts,tsx}"
     ],
-    "testRegex": "[^.]*/__tests__/[^.]*-test\\.tsx?",
+    "testRegex": "[^.]*/__tests__/[^.]*-test\\.tsx?$",
     "coverageThreshold": {
       "global": {
         "branches": 0,
