@@ -1,10 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import { axe, toHaveNoViolations } from 'jest-axe';
 import { literal, namedNode, quad } from '@rdfjs/data-model';
 import Input from '../src';
-
-expect.extend(toHaveNoViolations);
 
 describe('Testing the snapshot changes of fields', () => {
   it('Should have no violations on the default render for empty props', async () => {

@@ -1,6 +1,5 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import { axe, toHaveNoViolations } from 'jest-axe';
 import { literal, namedNode, quad } from '@rdfjs/data-model';
 import Input from '../src';
 
@@ -17,9 +16,7 @@ describe('Testing the accessibility of fields', () => {
       />,
     );
     // console.log(container.innerHTML.toString())
-    // expect(container.getElementsByTagName('fieldset')[0].getElementsByTagName('input').length).toBeGreaterThan(0);
     expect(container.innerHTML.toString()).toContain('input');
-
   });
 
   it('Should have no violations on the default render for namedNode props', async () => {
@@ -33,7 +30,6 @@ describe('Testing the accessibility of fields', () => {
         }}
       />,
     );
-    // expect(container.getElementsByTagName('fieldset')[0].getElementsByTagName('input').length).toBeGreaterThan(0);
     expect(container.innerHTML.toString()).toContain('input');
   });
 
@@ -54,7 +50,6 @@ describe('Testing the accessibility of fields', () => {
         }}
       />,
     );
-    // expect(container.getElementsByTagName('fieldset')[0].getElementsByTagName('input').length).toBeGreaterThan(0);
     expect(container.innerHTML.toString()).toContain('input');
   });
 
@@ -69,7 +64,6 @@ describe('Testing the accessibility of fields', () => {
         }}
       />,
     );
-    // expect(container.getElementsByTagName('fieldset')[0].getElementsByTagName('input').length).toBeGreaterThan(0);
     expect(container.innerHTML.toString()).toContain('input');
   });
 
