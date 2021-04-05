@@ -1,6 +1,6 @@
 {
   "name": "@ldfields/react-generic-dropdown",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Dropdown field that supports 'in' constraints with LDfields in react",
   "keywords": [
     "LDfields",
@@ -43,7 +43,7 @@
   },
   "dependencies": {
     "@jeswr/use-state": "^1.0.3",
-    "@ldfields/generic-field-base": "^0.0.7",
+    "@ldfields/generic-field-base": "^0.0.8",
     "@testing-library/react": "^11.2.6",
     "@types/react": "^17.0.3",
     "jest-axe": "^4.1.0",

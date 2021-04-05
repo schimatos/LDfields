@@ -1,6 +1,6 @@
 {
   "name": "@ldfields/react-renderer",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Render delegated LDfields in a react application",
   "keywords": [
     "input",
@@ -38,14 +38,14 @@
     "url": "https://github.com/schimatos/LDfields/issues"
   },
   "dependencies": {
-    "@ldfields/datatype-field-base": "^0.0.7",
-    "@ldfields/delegator": "^0.0.7",
-    "@ldfields/field-base": "^0.0.7",
+    "@ldfields/datatype-field-base": "^0.0.8",
+    "@ldfields/delegator": "^0.0.8",
+    "@ldfields/field-base": "^0.0.8",
     "@ontologies/xsd": "^1.0.0",
     "@types/react": "^17.0.3"
   },
   "devDependencies": {
-    "@ldfields/default-settings": "^0.0.7",
+    "@ldfields/default-settings": "^0.0.8",
     "@ontologies/core": "^2.0.2",
     "@testing-library/react": "^11.2.5",
     "@types/jest-axe": "^3.5.1",

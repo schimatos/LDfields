@@ -1,6 +1,6 @@
 {
   "name": "@ldfields/react-generic-search",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Input field for searching data, for use with LDfields in react",
   "keywords": [
     "LDfields",
@@ -71,7 +71,7 @@
   },
   "dependencies": {
     "@jeswr/use-state": "^1.0.3",
-    "@ldfields/field-base": "^0.0.7",
+    "@ldfields/field-base": "^0.0.8",
     "@types/react": "^17.0.3",
     "sparql-search-bar": "^1.0.0-alpha.1"
   }

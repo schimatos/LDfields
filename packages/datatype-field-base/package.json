@@ -1,6 +1,6 @@
 {
   "name": "@ldfields/datatype-field-base",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Base LDfield class for modifying datatype entries",
   "keywords": [
     "LDfield",
@@ -37,7 +37,7 @@
     "url": "https://github.com/schimatos/LDfields/issues"
   },
   "dependencies": {
-    "@ldfields/field-base": "^0.0.7",
+    "@ldfields/field-base": "^0.0.8",
     "@types/react": "^17.0.3"
   },
   "devDependencies": {
