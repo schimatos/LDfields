@@ -24,7 +24,15 @@ const DefaultSettingRenderer = LDfieldRendererFactory<{ [key: string]: string }>
       return true;
     }
 
-    Field = () => <input aria-label={this.fieldFor} />;
+    Field = ({ props, onChange }: {
+        props: Partial<Record<string, string>>;
+        onChange: (value: any) => void;
+      }) => (
+      <>
+        <label htmlFor={this.fieldFor}>{this.fieldFor}</label>
+        <input id={this.fieldFor} value={props[this.fieldFor] ?? ''} onChange={onChange} />
+      </>
+    );
 
     constructor(value: string) {
       this.fieldFor = value;
@@ -59,6 +67,9 @@ describe('Testing the accessibility of fields', () => {
         }}
       />,
     );
+    const [value, termType] = container.getElementsByTagName('input');
+    expect(value.value).toBe('http://example.org#Jesse');
+    expect(termType.value).toBe('NamedNode');
     const results = await axe(container);
     expect(results).toHaveNoViolations();
   });

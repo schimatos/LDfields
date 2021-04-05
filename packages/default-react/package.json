@@ -43,7 +43,9 @@
     "@ldfields/props-rdf-conversion": "^0.0.7",
     "@ldfields/react-datatype-field": "^0.0.7",
     "@ldfields/react-generic-basic-input": "^0.0.7",
-    "@ldfields/react-renderer": "^0.0.7"
+    "@ldfields/react-generic-dropdown": "^0.0.7",
+    "@ldfields/react-renderer": "^0.0.7",
+    "@types/react": "^17.0.3"
   },
   "devDependencies": {
     "@ldfields/field-base": "^0.0.7",

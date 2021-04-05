@@ -116,6 +116,7 @@ export function LDfieldRendererFactory<
             dispatch(update);
           }}
           label={label}
+          constraints={constraints}
         />
       </fieldset>
     );

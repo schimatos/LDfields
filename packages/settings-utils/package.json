@@ -64,5 +64,8 @@
         "statements": 50
       }
     }
+  },
+  "dependencies": {
+    "@types/react": "^17.0.3"
   }
 }

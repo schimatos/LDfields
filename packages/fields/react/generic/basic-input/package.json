@@ -39,7 +39,8 @@
   },
   "dependencies": {
     "@jeswr/use-state": "^1.0.3",
-    "@ldfields/generic-field-base": "^0.0.7"
+    "@ldfields/generic-field-base": "^0.0.7",
+    "@types/react": "^17.0.3"
   },
   "devDependencies": {
     "@ldfields/field-base": "^0.0.7",

@@ -38,7 +38,8 @@
     "url": "https://github.com/schimatos/LDfields/issues"
   },
   "dependencies": {
-    "@ldfields/settings-utils": "^0.0.7"
+    "@ldfields/settings-utils": "^0.0.7",
+    "@types/react": "^17.0.3"
   },
   "devDependencies": {
     "@ldfields/delegator": "^0.0.7",

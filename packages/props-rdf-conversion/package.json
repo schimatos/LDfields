@@ -40,7 +40,8 @@
     "url": "https://github.com/schimatos/LDfields/issues"
   },
   "dependencies": {
-    "@rdfjs/data-model": "^1.2.0"
+    "@rdfjs/data-model": "^1.2.0",
+    "@types/react": "^17.0.3"
   },
   "devDependencies": {
     "@types/rdf-js": "^4.0.1",
