@@ -5,19 +5,19 @@ exports[`Testing the snapshot changes of fields Should have no violations on the
   onBlur={[Function]}
 >
   <label>
-    undefined-value
+    value
   </label>
   <input
-    aria-label="undefined-value"
+    aria-label="value"
     onBlur={[Function]}
     onChange={[Function]}
     value=""
   />
   <label>
-    undefined-termType
+    termType
   </label>
   <input
-    aria-label="undefined-termType"
+    aria-label="termType"
     onBlur={[Function]}
     onChange={[Function]}
     value="Literal"
@@ -30,28 +30,28 @@ exports[`Testing the snapshot changes of fields Should have no violations on the
   onBlur={[Function]}
 >
   <label>
-    undefined-value
+    value
   </label>
   <input
-    aria-label="undefined-value"
+    aria-label="value"
     onBlur={[Function]}
     onChange={[Function]}
     value="0"
   />
   <label>
-    undefined-termType
+    termType
   </label>
   <input
-    aria-label="undefined-termType"
+    aria-label="termType"
     onBlur={[Function]}
     onChange={[Function]}
     value="Literal"
   />
   <label>
-    undefined-datatype
+    datatype
   </label>
   <input
-    aria-label="undefined-datatype"
+    aria-label="datatype"
     onBlur={[Function]}
     onChange={[Function]}
     value="http://www.w3.org/2001/XMLSchema#integer"
@@ -64,25 +64,25 @@ exports[`Testing the snapshot changes of fields Should have no violations on the
   onBlur={[Function]}
 >
   <input
-    aria-label="undefined-value"
+    aria-label="value"
     onChange={[Function]}
     type="text"
     value="Jesse"
   />
   <label>
-    undefined-termType
+    termType
   </label>
   <input
-    aria-label="undefined-termType"
+    aria-label="termType"
     onBlur={[Function]}
     onChange={[Function]}
     value="Jesse"
   />
   <label>
-    undefined-datatype
+    datatype
   </label>
   <input
-    aria-label="undefined-datatype"
+    aria-label="datatype"
     onBlur={[Function]}
     onChange={[Function]}
     value="Jesse"
@@ -95,37 +95,37 @@ exports[`Testing the snapshot changes of fields Should have no violations on the
   onBlur={[Function]}
 >
   <label>
-    undefined-value
+    value
   </label>
   <input
-    aria-label="undefined-value"
+    aria-label="value"
     onBlur={[Function]}
     onChange={[Function]}
     value="http://example.org#Jesse"
   />
   <label>
-    undefined-termType
+    termType
   </label>
   <input
-    aria-label="undefined-termType"
+    aria-label="termType"
     onBlur={[Function]}
     onChange={[Function]}
     value="NamedNode"
   />
   <label>
-    undefined-http://www.w3.org/1999/02/22-rdf-syntax-ns#type
+    type
   </label>
   <input
-    aria-label="undefined-http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+    aria-label="type"
     onBlur={[Function]}
     onChange={[Function]}
     value=""
   />
   <label>
-    undefined-http://www.w3.org/1999/02/22-rdf-syntax-ns#label
+    label
   </label>
   <input
-    aria-label="undefined-http://www.w3.org/1999/02/22-rdf-syntax-ns#label"
+    aria-label="label"
     onBlur={[Function]}
     onChange={[Function]}
     value=""
@@ -138,37 +138,37 @@ exports[`Testing the snapshot changes of fields Should have no violations on the
   onBlur={[Function]}
 >
   <label>
-    undefined-value
+    value
   </label>
   <input
-    aria-label="undefined-value"
+    aria-label="value"
     onBlur={[Function]}
     onChange={[Function]}
     value="http://example.org#Jesse"
   />
   <label>
-    undefined-termType
+    termType
   </label>
   <input
-    aria-label="undefined-termType"
+    aria-label="termType"
     onBlur={[Function]}
     onChange={[Function]}
     value="http://example.org#Jesse"
   />
   <label>
-    undefined-http://www.w3.org/1999/02/22-rdf-syntax-ns#type
+    type
   </label>
   <input
-    aria-label="undefined-http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+    aria-label="type"
     onBlur={[Function]}
     onChange={[Function]}
     value="http://example.org#Jesse"
   />
   <label>
-    undefined-http://www.w3.org/1999/02/22-rdf-syntax-ns#label
+    label
   </label>
   <input
-    aria-label="undefined-http://www.w3.org/1999/02/22-rdf-syntax-ns#label"
+    aria-label="label"
     onBlur={[Function]}
     onChange={[Function]}
     value="http://example.org#Jesse"

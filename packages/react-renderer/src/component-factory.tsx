@@ -18,7 +18,7 @@ export function ComponentFactory<
         components.map((Field: LDfieldBase<JSX.Element, Props, ExtraData>, i: number) => (
             <Field.Field
               {...props}
-              label={`${Field.fieldTargets.map(x => /[a-z]+$/i.exec(x)?.[0] ?? '').join('-')}`}
+              label={`${Field.fieldTargets.map((x) => /[a-z]+$/i.exec(x)?.[0] ?? '').join('-')}`}
               key={i}
               onChange={(p) => onChange({ ...props.props, ...p })}
             />

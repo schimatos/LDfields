@@ -41,7 +41,8 @@
     "@ldfields/datatype-field-base": "^0.0.7",
     "@ldfields/delegator": "^0.0.7",
     "@ldfields/field-base": "^0.0.7",
-    "@ontologies/xsd": "^1.0.0"
+    "@ontologies/xsd": "^1.0.0",
+    "@types/react": "^17.0.3"
   },
   "devDependencies": {
     "@ldfields/default-settings": "^0.0.7",

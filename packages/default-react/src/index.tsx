@@ -37,11 +37,35 @@ interface InputProps {
 function Input({
   props, onChange, constraints, data,
 }: InputProps): JSX.Element {
+  /**
+   * Manually add the term type constraints
+   */
+  // TODO [FUTURE]: Handle this more generically
+  let inTermtypes = ['NamedNode', 'BlankNode', 'Literal'];
+  const inConstraint = constraints.restrictions?.termType?.in
+  if (Array.isArray(inConstraint) && inConstraint.every(x => typeof x === 'string')) {
+    const newTermTypes = []
+    for (const term of inTermtypes) {
+      if (inConstraint.includes(term)) {
+        newTermTypes.push(term);
+      }
+    }
+    inTermtypes = newTermTypes;
+  }
   return <RawInput
     props={RDFToProps(props)}
     onChange={(d) => onChange(propsToRDF(d))}
     data={data}
-    constraints={constraints}
+    constraints={{
+      ...constraints,
+      restrictions: {
+        ...constraints.restrictions,
+        termType: {
+          ...(constraints.restrictions?.termType ?? {}),
+          in: inTermtypes
+        }
+      }
+    }}
   />;
 }
 
