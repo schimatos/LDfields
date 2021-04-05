@@ -27,6 +27,10 @@ export interface RendererActionsPropUpdate<
 > {
   type: 'propUpdate'
   props: Partial<Props>;
+  /**
+   * Optional function to trigger while the update is being made internally
+   */
+  onChange?: (e: Partial<Props>) => void
 }
 
 export interface RendererActionsDelegate<

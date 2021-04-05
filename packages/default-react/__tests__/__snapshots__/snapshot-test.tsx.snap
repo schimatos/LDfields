@@ -15,7 +15,6 @@ exports[`Testing the snapshot changes of fields Should have no violations on the
   />
   <select
     aria-label="termType"
-    onBlur={[Function]}
     onChange={[Function]}
     value="Literal"
   >
@@ -53,7 +52,6 @@ exports[`Testing the snapshot changes of fields Should have no violations on the
   />
   <select
     aria-label="termType"
-    onBlur={[Function]}
     onChange={[Function]}
     value="Literal"
   >
@@ -97,9 +95,8 @@ exports[`Testing the snapshot changes of fields Should have no violations on the
   />
   <select
     aria-label="termType"
-    onBlur={[Function]}
     onChange={[Function]}
-    value="Jesse"
+    value="Literal"
   >
     <option
       value="NamedNode"
@@ -144,7 +141,6 @@ exports[`Testing the snapshot changes of fields Should have no violations on the
   />
   <select
     aria-label="termType"
-    onBlur={[Function]}
     onChange={[Function]}
     value="NamedNode"
   >
@@ -200,9 +196,8 @@ exports[`Testing the snapshot changes of fields Should have no violations on the
   />
   <select
     aria-label="termType"
-    onBlur={[Function]}
     onChange={[Function]}
-    value="http://example.org#Jesse"
+    value="NamedNode"
   >
     <option
       value="NamedNode"

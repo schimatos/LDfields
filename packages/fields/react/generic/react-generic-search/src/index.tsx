@@ -5,9 +5,11 @@
 // import type { IQueryEngine } from '@comunica/types';
 // import Selector from 'sparql-search-bar';
 
+// TODO: Make this *not* generic
+
 // function fieldFactory<
 //   Props extends { [key: string]: string | undefined; },
-//   ExtraData extends { queryEngine: Promise<IQueryEngine>,  }
+//   ExtraData extends { queryEngine: Promise<IQueryEngine>, pathFactory: any }
 // >(modifier: string) {
 //   return function Field({ props, onChange, label, data }: FieldProps<Props, ExtraData>) {
 //     const [value, setValue] = useState<string>(props[modifier] ?? '');
@@ -20,7 +22,11 @@
 //         <Selector
 //           // TODO: Fix type casting here
 //           queryEngine={data?.queryEngine as Promise<IQueryEngine>}
-//           onChange={onChange}
+//           pathFactory={data?.pathFactory}
+//           // TODO: FIX TS-IGNORE
+//           // @ts-ignore
+//           onChange={e => { onChange(e as Partial<Props>) }}
+//           data={props}
 
 //         />
 //       </>
@@ -28,18 +34,17 @@
 //   };
 // }
 
-// export class BasicInput<
+// export class SparqlSearch<
 //   Props extends { [key: string]: string | undefined; },
 //   ExtraData = never,
-
 // > extends LDfieldGenericBase<JSX.Element, Props> {
-//   priority = 50;
+//   priority = 55;
 
 //   supports() {
 //     return true;
 //   }
 
-//   Field = fieldFactory<Props, ExtraData>(this.modifier)
+//   Field = fieldFactory<Props>(this.modifier)
 // }
 
 export {};
