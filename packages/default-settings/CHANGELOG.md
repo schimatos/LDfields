@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.0.9 (2021-04-05)
+
+
+### Bug Fixes
+
+* fix on blur event triggers ([a4c4269](https://github.com/schimatos/LDfields/commit/a4c42696fcfaec2c0fe1dfa180a9b059cddbe27c))
+
+
+
+
+
 ## 0.0.8 (2021-04-05)
 
 **Note:** Version bump only for package @ldfields/default-settings

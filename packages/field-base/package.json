@@ -1,6 +1,6 @@
 {
   "name": "@ldfields/field-base",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Base field class for LDfields",
   "keywords": [
     "LDfields",

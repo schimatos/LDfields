@@ -1,6 +1,6 @@
 {
   "name": "@ldfields/props-rdf-conversion",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Converts between LDfield props and rdf data",
   "keywords": [
     "LDfields",
