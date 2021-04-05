@@ -14,7 +14,9 @@ function reducer<
   RendererState<Props, ExtraData> {
   switch (a.type) {
     case 'propUpdate': {
-      return { ...s, cache: [a.props, ...s.cache], props: a.props };
+      const newState = { ...s, cache: [a.props, ...s.cache], props: a.props };
+      a.onChange?.(newState.props);
+      return newState
     }
     case 'delegate': {
       const delegation = s.GetComponent(a.props, a.constraints, a.data);
@@ -112,6 +114,7 @@ export function LDfieldRendererFactory<
             const update: RendererActions<Props, ExtraData> = {
               type: 'propUpdate',
               props: p,
+              onChange
             };
             dispatch(update);
           }}

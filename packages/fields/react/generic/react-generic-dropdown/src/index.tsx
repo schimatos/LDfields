@@ -13,22 +13,24 @@ function fieldFactory<
   return function Field({
     props, onChange, label, constraints,
   }: FieldProps<Props, ExtraData>) {
-    const [value, setValue] = useState<string>(props[modifier] ?? '');
-    useEffect(() => {
-      setValue(props.value ?? '');
-    }, [props.value]);
+    // const [value, setValue] = useState<string>(props[modifier] ?? '');
+    // useEffect(() => {
+    //   setValue(props.value ?? '');
+    // }, [props.value]);
     return (
       <>
         <select
-          value={value}
+          value={props[modifier] ?? ''}
           aria-label={label}
           onChange={(e) => {
-            setValue(e.target.value);
+            // TODO [FUTURE]: Remove type casting
+            console.log('onChange triggered')
+            onChange({ [modifier]: e.target.value } as Partial<Props>)
           }}
-          onBlur={() => {
-            // TODO [Future]: Remove type casting
-            onChange({ [modifier]: value } as Partial<Props>);
-          }}
+          // onBlur={() => {
+          //   // TODO [Future]: Remove type casting
+          //   onChange({ [modifier]: value } as Partial<Props>);
+          // }}
         >
           {getIn(constraints).map((opt) => (
             <option value={opt} key={opt}>{opt}</option>
