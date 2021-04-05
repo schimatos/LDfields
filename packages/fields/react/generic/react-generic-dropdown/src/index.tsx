@@ -55,5 +55,5 @@ export class GenericDropdownInput<
       && inConstraint.every(elem => typeof elem === 'string');
   }
 
-  Field = fieldFactory<Props, ExtraData>(this.modifier, constraints => this.in(constraints))
+  Field = fieldFactory<Props, ExtraData>(this.modifier, constraints => { return this.in(constraints) })
 }

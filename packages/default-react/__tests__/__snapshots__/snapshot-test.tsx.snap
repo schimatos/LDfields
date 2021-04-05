@@ -13,15 +13,28 @@ exports[`Testing the snapshot changes of fields Should have no violations on the
     onChange={[Function]}
     value=""
   />
-  <label>
-    termType
-  </label>
-  <input
+  <select
     aria-label="termType"
     onBlur={[Function]}
     onChange={[Function]}
     value="Literal"
-  />
+  >
+    <option
+      value="NamedNode"
+    >
+      NamedNode
+    </option>
+    <option
+      value="BlankNode"
+    >
+      BlankNode
+    </option>
+    <option
+      value="Literal"
+    >
+      Literal
+    </option>
+  </select>
 </fieldset>
 `;
 
@@ -38,15 +51,28 @@ exports[`Testing the snapshot changes of fields Should have no violations on the
     onChange={[Function]}
     value="0"
   />
-  <label>
-    termType
-  </label>
-  <input
+  <select
     aria-label="termType"
     onBlur={[Function]}
     onChange={[Function]}
     value="Literal"
-  />
+  >
+    <option
+      value="NamedNode"
+    >
+      NamedNode
+    </option>
+    <option
+      value="BlankNode"
+    >
+      BlankNode
+    </option>
+    <option
+      value="Literal"
+    >
+      Literal
+    </option>
+  </select>
   <label>
     datatype
   </label>
@@ -69,15 +95,28 @@ exports[`Testing the snapshot changes of fields Should have no violations on the
     type="text"
     value="Jesse"
   />
-  <label>
-    termType
-  </label>
-  <input
+  <select
     aria-label="termType"
     onBlur={[Function]}
     onChange={[Function]}
     value="Jesse"
-  />
+  >
+    <option
+      value="NamedNode"
+    >
+      NamedNode
+    </option>
+    <option
+      value="BlankNode"
+    >
+      BlankNode
+    </option>
+    <option
+      value="Literal"
+    >
+      Literal
+    </option>
+  </select>
   <label>
     datatype
   </label>
@@ -85,7 +124,7 @@ exports[`Testing the snapshot changes of fields Should have no violations on the
     aria-label="datatype"
     onBlur={[Function]}
     onChange={[Function]}
-    value="Jesse"
+    value="http://www.w3.org/2001/XMLSchema#string"
   />
 </fieldset>
 `;
@@ -103,15 +142,28 @@ exports[`Testing the snapshot changes of fields Should have no violations on the
     onChange={[Function]}
     value="http://example.org#Jesse"
   />
-  <label>
-    termType
-  </label>
-  <input
+  <select
     aria-label="termType"
     onBlur={[Function]}
     onChange={[Function]}
     value="NamedNode"
-  />
+  >
+    <option
+      value="NamedNode"
+    >
+      NamedNode
+    </option>
+    <option
+      value="BlankNode"
+    >
+      BlankNode
+    </option>
+    <option
+      value="Literal"
+    >
+      Literal
+    </option>
+  </select>
   <label>
     type
   </label>
@@ -146,15 +198,28 @@ exports[`Testing the snapshot changes of fields Should have no violations on the
     onChange={[Function]}
     value="http://example.org#Jesse"
   />
-  <label>
-    termType
-  </label>
-  <input
+  <select
     aria-label="termType"
     onBlur={[Function]}
     onChange={[Function]}
     value="http://example.org#Jesse"
-  />
+  >
+    <option
+      value="NamedNode"
+    >
+      NamedNode
+    </option>
+    <option
+      value="BlankNode"
+    >
+      BlankNode
+    </option>
+    <option
+      value="Literal"
+    >
+      Literal
+    </option>
+  </select>
   <label>
     type
   </label>
@@ -162,7 +227,7 @@ exports[`Testing the snapshot changes of fields Should have no violations on the
     aria-label="type"
     onBlur={[Function]}
     onChange={[Function]}
-    value="http://example.org#Jesse"
+    value=""
   />
   <label>
     label
@@ -171,7 +236,7 @@ exports[`Testing the snapshot changes of fields Should have no violations on the
     aria-label="label"
     onBlur={[Function]}
     onChange={[Function]}
-    value="http://example.org#Jesse"
+    value=""
   />
 </fieldset>
 `;

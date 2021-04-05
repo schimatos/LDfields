@@ -83,7 +83,7 @@ export function LDfieldRendererFactory<
   Props extends { [key: string]: string | undefined; },
   ExtraData = never
 >({
-  settings, fields, genericFields, defaultProps,
+  settings, fields, genericFields, defaultProps
 }: RendererFactoryProps<Props, ExtraData>) {
   const InputDelegator = InputDelegatorFactory(settings, fields, genericFields);
 
@@ -116,6 +116,7 @@ export function LDfieldRendererFactory<
             dispatch(update);
           }}
           label={label}
+          constraints={constraints}
         />
       </fieldset>
     );

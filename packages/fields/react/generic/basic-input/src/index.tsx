@@ -10,8 +10,9 @@ function fieldFactory<
   return function Field({ props, onChange, label }: FieldProps<Props, ExtraData>) {
     const [value, setValue] = useState<string>(props[modifier] ?? '');
     useEffect(() => {
-      setValue(props.value ?? '');
-    }, [props.value]);
+      setValue(props[modifier] ?? '');
+    }, [props[modifier]]);
+    // console.log(value)
     return (
       <>
         <label>{label ?? (modifier ? /[a-z]*$/i.exec(modifier)?.[0] : '')}</label>
