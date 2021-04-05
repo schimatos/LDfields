@@ -24,7 +24,10 @@ const DefaultSettingRenderer = LDfieldRendererFactory<{ [key: string]: string }>
       return true;
     }
 
-    Field = ({ props, onChange }: { props: Partial<Record<string, string>>, onChange: (value: any) => void }) => (
+    Field = ({ props, onChange }: {
+        props: Partial<Record<string, string>>;
+        onChange: (value: any) => void;
+      }) => (
       <>
         <label htmlFor={this.fieldFor}>{this.fieldFor}</label>
         <input id={this.fieldFor} value={props[this.fieldFor] ?? ''} onChange={onChange} />
@@ -64,7 +67,7 @@ describe('Testing the accessibility of fields', () => {
         }}
       />,
     );
-    const [value, termType] = container.getElementsByTagName('input')
+    const [value, termType] = container.getElementsByTagName('input');
     expect(value.value).toBe('http://example.org#Jesse');
     expect(termType.value).toBe('NamedNode');
     const results = await axe(container);

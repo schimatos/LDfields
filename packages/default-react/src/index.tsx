@@ -42,9 +42,9 @@ function Input({
    */
   // TODO [FUTURE]: Handle this more generically
   let inTermtypes = ['NamedNode', 'BlankNode', 'Literal'];
-  const inConstraint = constraints.restrictions?.termType?.in
-  if (Array.isArray(inConstraint) && inConstraint.every(x => typeof x === 'string')) {
-    const newTermTypes = []
+  const inConstraint = constraints.restrictions?.termType?.in;
+  if (Array.isArray(inConstraint) && inConstraint.every((x) => typeof x === 'string')) {
+    const newTermTypes = [];
     for (const term of inTermtypes) {
       if (inConstraint.includes(term)) {
         newTermTypes.push(term);
@@ -62,9 +62,9 @@ function Input({
         ...constraints.restrictions,
         termType: {
           ...(constraints.restrictions?.termType ?? {}),
-          in: inTermtypes
-        }
-      }
+          in: inTermtypes,
+        },
+      },
     }}
   />;
 }

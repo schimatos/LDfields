@@ -6,5 +6,5 @@ import type { ExtraData } from './index';
 
 export const genericFields: GenericField<JSX.Element, Props, ExtraData>[] = [
   BasicInput,
-  GenericDropdownInput
+  GenericDropdownInput,
 ];

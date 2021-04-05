@@ -33,9 +33,9 @@ describe('Testing the accessibility of fields', () => {
     expect(container.innerHTML.toString()).toContain('input');
     const [value, label] = container.getElementsByTagName('input');
     const [termType] = container.getElementsByTagName('select');
-    expect(value.value).toBe("http://example.org#Jesse");
-    expect(termType.value).toBe("NamedNode");
-    expect(label.value).toBe("");
+    expect(value.value).toBe('http://example.org#Jesse');
+    expect(termType.value).toBe('NamedNode');
+    expect(label.value).toBe('');
   });
 
   it('Should have no violations on the default render for namedNode props + label', async () => {

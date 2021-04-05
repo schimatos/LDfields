@@ -6,8 +6,13 @@ import { useState } from '@jeswr/use-state';
 function fieldFactory<
   Props extends { [key: string]: string | undefined; },
   ExtraData
->(modifier: string, getIn: (constraints: Constraints<Props, Record<string, any>> | undefined) => string[]) {
-  return function Field({ props, onChange, label, constraints }: FieldProps<Props, ExtraData>) {
+>(
+  modifier: string,
+  getIn: (constraints: Constraints<Props, Record<string, any>> | undefined) => string[],
+) {
+  return function Field({
+    props, onChange, label, constraints,
+  }: FieldProps<Props, ExtraData>) {
     const [value, setValue] = useState<string>(props[modifier] ?? '');
     useEffect(() => {
       setValue(props.value ?? '');
@@ -25,7 +30,7 @@ function fieldFactory<
             onChange({ [modifier]: value } as Partial<Props>);
           }}
         >
-          {getIn(constraints).map(opt => (
+          {getIn(constraints).map((opt) => (
             <option value={opt} key={opt}>{opt}</option>
           ))}
         </select>
@@ -42,7 +47,7 @@ export class GenericDropdownInput<
   priority = 60;
 
   in(constraints: Constraints<Props, Record<string, any>> | undefined) {
-    return constraints?.restrictions?.[this.modifies[0]]?.in
+    return constraints?.restrictions?.[this.modifies[0]]?.in;
   }
 
   /**
@@ -52,8 +57,8 @@ export class GenericDropdownInput<
     const inConstraint = this.in(constraints);
     return this.modifies.length === 1
       && Array.isArray(inConstraint)
-      && inConstraint.every(elem => typeof elem === 'string');
+      && inConstraint.every((elem) => typeof elem === 'string');
   }
 
-  Field = fieldFactory<Props, ExtraData>(this.modifier, constraints => { return this.in(constraints) })
+  Field = fieldFactory<Props, ExtraData>(this.modifier, (constraints) => this.in(constraints))
 }
