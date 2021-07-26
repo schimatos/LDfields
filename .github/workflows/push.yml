@@ -21,8 +21,7 @@ jobs:
 
       - name: npm install, build, and lint
         run: |
-          npm install
-          npm run build --if-present
+          yarn install
           npm run-script lint
   build:
     runs-on: ubuntu-latest
@@ -37,8 +36,7 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: npm ci
-    - run: npm run build --if-present
+    - run: yarn install
     - run: npm test
 
   analyze:
@@ -69,9 +67,37 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: '15'
-      - run: npm ci
-      - name: Release
+      - run: yarn install
+      - run: npm test
+
+      - name: Configure CI Git User
+        run: |
+          git config --global user.name '@jeswr'
+          git config --global user.email 'jesse.wright@anu.edu.au'
+          git remote set-url origin https://$GITHUB_ACTOR:$GITHUB_PAT@github.com/schimatos/ldfields
+        env:
+          GITHUB_PAT: ${{ secrets.GH_TOKEN }}
+
+      - name: Checkout and pull branch
+        run: git checkout "${GITHUB_REF:11}" && git pull
+
+      - name: Install Packages
+        run: yarn install
+
+      - name: Authenticate with Registry
+        run: |
+          yarn logout
+          echo "@ldfields:registry=http://registry.npmjs.org/" > .npmrc
+          echo "registry=http://registry.npmjs.org/" >> .npmrc
+          echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> .npmrc
+          npm whoami
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Publish package
+        run: | 
+          npx lerna publish --yes --conventional-commits --no-private --message "chore: release new versions"
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-        run: npx semantic-release
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
