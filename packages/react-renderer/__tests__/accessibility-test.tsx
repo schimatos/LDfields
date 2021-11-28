@@ -54,6 +54,11 @@ const SingleFieldRenderer = LDfieldRendererFactory<{ value: string }>({
 expect.extend(toHaveNoViolations);
 
 describe('Testing the accessibility of fields', () => {
+  beforeEach(() => {
+    const { getComputedStyle } = window;
+    window.getComputedStyle = (elt) => getComputedStyle(elt);
+  });
+
   it('Should have no violations on the default render for empty props', async () => {
     const { container } = render(
       <EmptyRenderer

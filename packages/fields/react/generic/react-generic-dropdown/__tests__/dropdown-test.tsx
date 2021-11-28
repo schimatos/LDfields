@@ -9,6 +9,11 @@ import { GenericDropdownInput } from '../src';
 expect.extend(toHaveNoViolations);
 
 describe('Testing the accessibility of generic dropdown field', () => {
+  beforeEach(() => {
+    const { getComputedStyle } = window;
+    window.getComputedStyle = (elt) => getComputedStyle(elt);
+  });
+
   it('Should have no violations for valid input', async () => {
     const Instance = new GenericDropdownInput('value');
     const { Field } = Instance;
@@ -34,6 +39,11 @@ describe('Testing the accessibility of generic dropdown field', () => {
 });
 
 describe('dropdown-input supports tests', () => {
+  beforeEach(() => {
+    const { getComputedStyle } = window;
+    window.getComputedStyle = (elt) => getComputedStyle(elt);
+  });
+
   it('true tests', () => {
     const Instance = new GenericDropdownInput('value');
     expect(Instance.supports({}, {

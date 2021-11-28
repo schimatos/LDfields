@@ -58,6 +58,11 @@ const DefaultSettingRenderer = LDfieldRendererFactory<{ [key: string]: string }>
 expect.extend(toHaveNoViolations);
 
 describe('Testing the accessibility of fields', () => {
+  beforeEach(() => {
+    const { getComputedStyle } = window;
+    window.getComputedStyle = (elt) => getComputedStyle(elt);
+  });
+
   it('Should have no violations on the default render for empty props', async () => {
     const { container } = render(
       <DefaultSettingRenderer
@@ -72,6 +77,11 @@ describe('Testing the accessibility of fields', () => {
 });
 
 describe('Testing the complex field contains an input fields', () => {
+  beforeEach(() => {
+    const { getComputedStyle } = window;
+    window.getComputedStyle = (elt) => getComputedStyle(elt);
+  });
+
   it('Should have no violations on the default render for empty props', async () => {
     const { container } = render(
       <DefaultSettingRenderer
@@ -85,6 +95,11 @@ describe('Testing the complex field contains an input fields', () => {
 });
 
 describe('Testing the complex field does not change', () => {
+  beforeEach(() => {
+    const { getComputedStyle } = window;
+    window.getComputedStyle = (elt) => getComputedStyle(elt);
+  });
+
   it('Should have no violations on the default render for empty props', async () => {
     const tree = renderer.create(
       <DefaultSettingRenderer
