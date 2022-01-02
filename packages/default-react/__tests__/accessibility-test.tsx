@@ -1,7 +1,7 @@
 /**
  * @jest-environment jsdom
  */
-import React from 'react';
+import React, { useState } from 'react';
 import { render } from '@testing-library/react';
 import { axe, toHaveNoViolations } from 'jest-axe';
 import { literal, namedNode, quad } from '@rdfjs/data-model';
@@ -90,4 +90,30 @@ describe('Testing the accessibility of fields', () => {
     const results = await axe(container);
     expect(results).toHaveNoViolations();
   });
+});
+function MyComponent() {
+  const [state, setState] = useState('');
+  return <input aria-label="foo" value={state} onChange={() => { setState('boop'); }} />;
+}
+
+// This is here to test issues related to multiple
+// instances of react being introduced by multiple
+// packages and the test suite
+it('Something witout hooks', async () => {
+  const { container } = render(
+    <input aria-label="foo" />,
+  );
+  const results = await axe(container);
+  expect(results).toHaveNoViolations();
+});
+
+// This is here to test issues related to multiple
+// instances of react being introduced by multiple
+// packages and the test suite
+it('Something with hooks', async () => {
+  const { container } = render(
+    <MyComponent />,
+  );
+  const results = await axe(container);
+  expect(results).toHaveNoViolations();
 });
