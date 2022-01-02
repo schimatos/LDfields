@@ -13,6 +13,8 @@ export function delegate<
   FieldConstraints extends Record<string, any> = Record<string, any>
 >(
   props: Partial<Props>,
+  // TODO: Fix this
+  // eslint-disable-next-line default-param-last
   constraints: Constraints<Props, FieldConstraints> = {},
   fields: LDfieldBase<Rendered, Props, ExtraData>[],
   multiControl: boolean,

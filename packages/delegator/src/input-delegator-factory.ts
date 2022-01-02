@@ -34,6 +34,7 @@ export function InputDelegatorFactory<
       _settingsRecord?: Partial<LDfieldSettingsRecord<keyof Props & string>>,
       _sortedFields?: LDfieldBase<T, Props, ExtraData>[],
     ) {
+      // eslint-disable-next-line no-constructor-return
       return new InputDelegator(
         _settings ?? settings,
         _fields ?? fields,
