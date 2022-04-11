@@ -49,7 +49,7 @@
   },
   "devDependencies": {
     "@ldfields/field-base": "^0.0.11",
-    "@rdfjs/data-model": "^1.2.0",
+    "@rdfjs/data-model": "^2.0.1",
     "@testing-library/dom": "^8.11.1",
     "@testing-library/react": "^12.1.2",
     "@types/jest-axe": "^3.5.1",
