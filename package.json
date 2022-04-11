@@ -42,7 +42,7 @@
   "homepage": "",
   "devDependencies": {
     "@jeswr/use-state": "^1.0.3",
-    "@rdfjs/data-model": "^1.2.0",
+    "@rdfjs/data-model": "^2.0.1",
     "@strictsoftware/typedoc-plugin-monorepo": "^0.4.2",
     "@types/jest": "^27.0.3",
     "@types/rdf-js": "^4.0.1",
